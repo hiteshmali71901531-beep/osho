@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
+@theme {
+  /* ---- Spanish Blue #006EB7 (primary) ---- */
+  --color-brand-50: #eef7fd;
+  --color-brand-100: #d7ecfa;
+  --color-brand-200: #b3daf4;
+  --color-brand-300: #7fc2ec;
+  --color-brand-400: #3fa2df;
+  --color-brand-500: #1583c8;
+  --color-brand-600: #006eb7;
+  --color-brand-700: #005593;
+  --color-brand-800: #01477a;
+  --color-brand-900: #063c65;
+  --color-brand-950: #042643;
+
+  /* ---- Bright Yellow / Crayola #F9A421 (secondary) ----
+     Note on usage: the brand orange is a FILL colour. #F9A421 on white is
+     1.9:1 and #EA7C0B is 2.8:1, so neither may carry text on a light surface.
+     `accent-700` (5.0:1) and `accent-800` (6.4:1) are the text-safe steps and
+     are what every orange word on a white background uses. */
+  --color-accent-50: #fff9ed;
+  --color-accent-100: #fff1d4;
+  --color-accent-200: #ffdfa8;
+  --color-accent-300: #fec871;
+  --color-accent-400: #fcaa38;
+  --color-accent-500: #f9a421;
+  --color-accent-600: #ea7c0b;
+  --color-accent-700: #b45309;
+  --color-accent-800: #8f4008;
+  --color-accent-900: #73340a;
+
+  /* ---- Neutrals: Outer Space #444545 / Philippine Silver #B7B7B7 ---- */
+  --color-ink-50: #f6f7f7;
+  --color-ink-100: #ededee;
+  --color-ink-200: #d9dadb;
+  --color-ink-300: #b7b7b7;
+  --color-ink-400: #8d8e8f;
+  --color-ink-500: #6d6e6f;
+  --color-ink-600: #57585a;
+  --color-ink-700: #444545;
+  --color-ink-800: #303132;
+  --color-ink-900: #1b1c1c;
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgb(4 38 67 / 0.04), 0 8px 24px -12px rgb(4 38 67 / 0.14);
+  --shadow-lift: 0 2px 4px rgb(4 38 67 / 0.05), 0 18px 40px -16px rgb(4 38 67 / 0.22);
+}
+
+/* The site is light-only by design; pin the color scheme so browser UA
+   styles (form controls, scrollbars) don't invert on dark-mode devices. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: var(--color-ink-700);
+  font-family: var(--font-sans);
+}
+
+/* Single global focus treatment — visible on every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Native <details> accordion: hide the default marker, we draw our own chevron. */
+summary::-webkit-details-marker {
+  display: none;
+}
+summary {
+  list-style: none;
 }

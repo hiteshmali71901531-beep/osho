@@ -1,69 +1,112 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { CategoryGrid } from "@/components/sections/CategoryGrid";
+import { CtaBand } from "@/components/sections/CtaBand";
+import { FeatureStrip } from "@/components/sections/FeatureStrip";
+import { Hero } from "@/components/sections/Hero";
+import { Newsletter } from "@/components/sections/Newsletter";
+import { StatsBand } from "@/components/sections/StatsBand";
+import { StepsRail } from "@/components/sections/StepsRail";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ArrowRightIcon, CheckCircleIcon } from "@/components/brand/Icons";
+import { buyerSteps } from "@/lib/content/home";
+import { sellerBenefits } from "@/lib/content/seller";
+import { site } from "@/lib/site";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: `${site.name} — ${site.tagline}`,
+  description: site.description,
+  alternates: { canonical: "/" },
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Hero />
+      <FeatureStrip />
+      <CategoryGrid />
+      <StepsRail
+        eyebrow="How it works"
+        title="Shopping made simple"
+        description="Four steps from browsing your neighbourhood shops to opening the box at your door."
+        steps={buyerSteps}
+      />
+
+      {/* Seller pitch */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <div>
+              <SectionHeading
+                eyebrow="For shop owners"
+                title="Your shop, online — without the setup cost"
+                description="OWSHO exists to make the online marketplace fairer. We help local businesses get online so they can compete and grow, with delivery, payments and support handled for them."
+                align="left"
+              />
+              <ul className="mt-8 space-y-4">
+                {sellerBenefits.slice(0, 4).map((benefit) => (
+                  <li key={benefit.title} className="flex gap-3">
+                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                    <div>
+                      <h3 className="text-sm font-semibold text-brand-950">
+                        {benefit.title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-ink-500">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/seller-benefits"
+                className="mt-8 inline-flex h-12 items-center gap-2 rounded-pill bg-brand-600 px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+              >
+                See all seller benefits
+                <ArrowRightIcon className="h-5 w-5" />
+              </Link>
+            </div>
+
+            <div className="rounded-card border border-ink-100 bg-brand-50/70 p-8 shadow-card">
+              <p className="text-xs font-semibold tracking-[0.18em] text-accent-700 uppercase">
+                Our mission
+              </p>
+              <blockquote className="mt-4 text-lg leading-relaxed font-semibold text-brand-950 text-pretty">
+                “We see a lively online marketplace where every{" "}
+                <span className="text-brand-600">Owner&rsquo;s Shop</span> is a
+                big success — a <span className="text-accent-700">Vocal for Local</span>{" "}
+                community where local businesses and communities thrive
+                together.”
+              </blockquote>
+              <p className="mt-5 text-sm text-ink-500">
+                Inspired by the Vocal for Local movement, OWSHO helps shop owners
+                show off their products and reach more people, with fast delivery
+                and fair prices for everyone.
+              </p>
+
+              <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-ink-200 pt-6">
+                {[
+                  { term: "Setup cost", detail: "₹0" },
+                  { term: "Verification", detail: "~48 hrs" },
+                  { term: "Payouts", detail: "Weekly" },
+                ].map((item) => (
+                  <div key={item.term}>
+                    <dt className="text-xs text-ink-500">{item.term}</dt>
+                    <dd className="mt-1 text-xl font-bold text-brand-700">
+                      {item.detail}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <StatsBand />
+      <Newsletter />
+      <CtaBand />
+    </>
   );
 }
