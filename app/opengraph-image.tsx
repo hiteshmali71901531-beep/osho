@@ -63,7 +63,7 @@ export default function OpenGraphImage() {
               lineHeight: 1.15,
             }}
           >
-            Empowering Local Businesses.
+            Local commerce,
           </span>
           <span
             style={{
@@ -73,12 +73,12 @@ export default function OpenGraphImage() {
               lineHeight: 1.15,
             }}
           >
-            Enriching Communities.
+            delivered in minutes.
           </span>
         </div>
 
         <span style={{ color: "#B3DAF4", fontSize: 28 }}>
-          owshomarketplace.com — sell online with zero setup cost
+          owshomarketplace.com — bringing neighbourhood stores online
         </span>
       </div>
     ),

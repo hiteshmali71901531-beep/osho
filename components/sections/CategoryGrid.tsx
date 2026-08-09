@@ -10,8 +10,8 @@ export function CategoryGrid() {
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
-            eyebrow="Browse categories"
-            title="Shop from top local categories"
+            eyebrow="What you can find"
+            title="Everything from your local stores"
             align="left"
           />
           <Link
@@ -22,7 +22,7 @@ export function CategoryGrid() {
           </Link>
         </div>
 
-        <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7">
           {categories.map((category) => (
             <li key={category.slug}>
               <Link
@@ -32,10 +32,9 @@ export function CategoryGrid() {
                 <span className="grid h-20 w-20 place-items-center rounded-full bg-brand-50 p-3.5 transition-colors group-hover:bg-brand-100">
                   <CategoryArt slug={category.slug} />
                 </span>
-                <span className="text-sm font-semibold text-brand-950">
+                <span className="text-sm font-semibold text-balance text-brand-950">
                   {category.name}
                 </span>
-                <span className="text-xs text-ink-500">{category.productCount}</span>
               </Link>
             </li>
           ))}

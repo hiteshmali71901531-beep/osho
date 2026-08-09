@@ -211,6 +211,56 @@ export const GlobeIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const UsersIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="9" cy="8" r="3.4" />
+    <path d="M2.8 20a6.2 6.2 0 0 1 12.4 0" />
+    <path d="M16.2 5.2a3.4 3.4 0 0 1 0 6.6M17.6 14.4A6.2 6.2 0 0 1 21.2 20" />
+  </Icon>
+);
+
+export const WarehouseIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M2.8 20V9.4L12 4.6l9.2 4.8V20" />
+    <path d="M7 20v-6.2h10V20" />
+    <path d="M7 16.6h10" />
+  </Icon>
+);
+
+export const ScooterIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="5" cy="17.5" r="3" />
+    <circle cx="18.5" cy="17.5" r="3" />
+    <path d="M8 17.5h7.5l-2.2-9.3H10" />
+    <path d="M15.3 8.2h3.2l1.6 6.4" />
+  </Icon>
+);
+
+export const LockIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="4.5" y="10.2" width="15" height="10.3" rx="2.4" />
+    <path d="M8 10.2V7.6a4 4 0 0 1 8 0v2.6" />
+    <path d="M12 14v2.8" />
+  </Icon>
+);
+
+export const NewspaperIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M3.2 5.6h13.4v14.8H5.6a2.4 2.4 0 0 1-2.4-2.4Z" />
+    <path d="M16.6 9.2h4.2v8.8a2.4 2.4 0 0 1-4.2 1.6" />
+    <path d="M6.2 8.8h7.4M6.2 12.2h7.4M6.2 15.6h4.6" />
+  </Icon>
+);
+
+export const ScalesIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M12 3.6v16.8M7.4 20.4h9.2" />
+    <path d="M4 7.6h16" />
+    <path d="M4 7.6 1.8 13.4a2.6 2.6 0 0 0 4.4 0Z" />
+    <path d="M20 7.6 17.8 13.4a2.6 2.6 0 0 0 4.4 0Z" />
+  </Icon>
+);
+
 /* ---- Social (filled, brand-provided glyph shapes) ---- */
 
 function SocialIcon({ children, ...props }: IconProps) {

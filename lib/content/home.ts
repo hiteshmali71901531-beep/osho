@@ -1,102 +1,74 @@
 import {
-  BagIcon,
-  BoxIcon,
-  CartIcon,
+  GlobeIcon,
   HeartHandIcon,
-  PriceTagIcon,
-  ShieldIcon,
-  SmileIcon,
+  SparkleIcon,
   StoreIcon,
   TruckIcon,
-  WalletIcon,
+  UsersIcon,
 } from "@/components/brand/Icons";
+import type { Feature, Point } from "@/lib/content/types";
 
-type IconComponent = typeof TruckIcon;
-
-export type Feature = {
-  title: string;
-  description: string;
-  Icon: IconComponent;
-  tone: "brand" | "accent";
-};
-
-/** The four brand "key points" from the OWSHO brand guidelines. */
+/**
+ * "Built for the local customer" — the three customer-facing propositions from
+ * the approved Owsho Express page copy.
+ */
 export const features: Feature[] = [
   {
-    title: "Quick Delivery",
-    description: "Get your orders delivered fast at your doorstep.",
+    title: "Faster access to everyday products",
+    description:
+      "Built around nearby inventory and local fulfilment, so eligible orders reach you quickly.",
     Icon: TruckIcon,
     tone: "brand",
   },
   {
-    title: "Best Prices",
-    description: "Quality products at prices you'll love.",
-    Icon: PriceTagIcon,
-    tone: "brand",
-  },
-  {
-    title: "Local Support",
-    description: "We grow together by supporting local.",
-    Icon: HeartHandIcon,
-    tone: "accent",
-  },
-  {
-    title: "Secure & Safe",
-    description: "Your data and payments are 100% protected.",
-    Icon: ShieldIcon,
-    tone: "brand",
-  },
-];
-
-export type Step = {
-  number: string;
-  title: string;
-  description: string;
-  Icon: IconComponent;
-  tone: "brand" | "accent";
-};
-
-export const buyerSteps: Step[] = [
-  {
-    number: "01",
-    title: "Choose Local Shops",
-    description: "Browse trusted local shops near you.",
+    title: "Local businesses, digitally connected",
+    description:
+      "Neighbourhood stores already have the products and the trust. We connect them with the technology.",
     Icon: StoreIcon,
-    tone: "brand",
-  },
-  {
-    number: "02",
-    title: "Add to Cart",
-    description: "Add your favourite products to the cart.",
-    Icon: CartIcon,
     tone: "accent",
   },
   {
-    number: "03",
-    title: "Secure Checkout",
-    description: "Pay safely with multiple payment options.",
-    Icon: WalletIcon,
+    title: "Technology meets local commerce",
+    description:
+      "Demand, seller inventory, order management, local fulfilment and delivery, brought together.",
+    Icon: SparkleIcon,
     tone: "brand",
-  },
-  {
-    number: "04",
-    title: "Fast Delivery",
-    description: "Get your order delivered quickly to your doorstep.",
-    Icon: TruckIcon,
-    tone: "accent",
   },
 ];
 
-export type Stat = {
-  value: string;
-  label: string;
-  Icon: IconComponent;
-};
+/**
+ * "Owsho runs on a simple network — customers who want convenience, local
+ * sellers who want reach, and delivery partners who bring it all together."
+ * (About Us — Built on Local Commerce.)
+ */
+export const networkPillars: Point[] = [
+  {
+    title: "Customers",
+    description:
+      "People who want the convenience of shopping online without giving up the shops they already know.",
+    Icon: UsersIcon,
+    tone: "brand",
+  },
+  {
+    title: "Local sellers",
+    description:
+      "Neighbourhood businesses that want reach — a real digital storefront, without building any of it themselves.",
+    Icon: StoreIcon,
+    tone: "accent",
+  },
+  {
+    title: "Delivery partners",
+    description:
+      "Independent delivery professionals who bring every order from the store to the customer's door.",
+    Icon: TruckIcon,
+    tone: "brand",
+  },
+];
 
-/** TODO(owsho): replace with live platform numbers before launch. */
-export const stats: Stat[] = [
-  { value: "5000+", label: "Local Shops", Icon: StoreIcon },
-  { value: "50K+", label: "Happy Customers", Icon: BagIcon },
-  { value: "1L+", label: "Products Sold", Icon: BoxIcon },
-  { value: "98%", label: "Customer Satisfaction", Icon: SmileIcon },
+/** Short trust points shown under the home hero. */
+export const heroTrustPoints: { label: string; Icon: Feature["Icon"] }[] = [
+  { label: "Local sellers", Icon: StoreIcon },
+  { label: "Delivered in minutes", Icon: TruckIcon },
+  { label: "Free listing for sellers", Icon: HeartHandIcon },
+  { label: "Deesa, and growing", Icon: GlobeIcon },
 ];

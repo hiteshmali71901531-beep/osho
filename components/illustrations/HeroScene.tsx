@@ -15,18 +15,19 @@ const BLUE_SOFT = "#D7ECFA";
 const ORANGE = "#F9A421";
 const WHITE = "#FFFFFF";
 
+/** Real Owsho categories, abbreviated to fit the 36px tiles. */
 const CATEGORY_TILES = [
-  { x: 218, label: "Fashion" },
-  { x: 264, label: "Grocery" },
-  { x: 310, label: "Home" },
-  { x: 356, label: "Beauty" },
+  { x: 218, label: "Grocery" },
+  { x: 264, label: "Snacks" },
+  { x: 310, label: "Beauty" },
+  { x: 356, label: "Pooja" },
 ];
 
-const SHOP_CARDS = [
-  { x: 216, name: "Urban Style", kind: "Fashion" },
-  { x: 278, name: "Green Basket", kind: "Grocery" },
-  { x: 340, name: "Home Decor", kind: "Home" },
-];
+/**
+ * Deliberately unnamed: these stand for "shops near you" rather than
+ * naming businesses that do not exist.
+ */
+const SHOP_CARDS = [{ x: 216 }, { x: 278 }, { x: 340 }];
 
 export function HeroScene({ className = "" }: { className?: string }) {
   return (
@@ -187,15 +188,15 @@ export function HeroScene({ className = "" }: { className?: string }) {
           </g>
         ))}
 
-        {/* Popular shops */}
+        {/* Shops near you */}
         <text x="212" y="238" fill={NAVY} fontSize="10" fontWeight="600">
-          Popular Shops
+          Shops near you
         </text>
         <text x="408" y="238" textAnchor="end" fill={BLUE} fontSize="8" fontWeight="600">
           View all
         </text>
         {SHOP_CARDS.map((card) => (
-          <g key={card.name}>
+          <g key={card.x}>
             <rect
               x={card.x}
               y="246"
@@ -212,35 +213,19 @@ export function HeroScene({ className = "" }: { className?: string }) {
               stroke={ORANGE}
               strokeWidth="3"
             />
-            <text
-              x={card.x + 26}
-              y="300"
-              textAnchor="middle"
-              fill={NAVY}
-              fontSize="7"
-              fontWeight="600"
-            >
-              {card.name}
-            </text>
-            <text
-              x={card.x + 26}
-              y="310"
-              textAnchor="middle"
-              fill="#94A3B8"
-              fontSize="6"
-            >
-              {card.kind}
-            </text>
+            {/* Placeholder rules, not invented shop names. */}
+            <rect x={card.x + 8} y="296" width="36" height="5" rx="2.5" fill="#CBD5E1" />
+            <rect x={card.x + 8} y="306" width="24" height="5" rx="2.5" fill="#E2E8F0" />
           </g>
         ))}
 
-        {/* Offer banner */}
+        {/* Banner */}
         <rect x="212" y="332" width="196" height="56" rx="12" fill={BLUE} />
         <text x="226" y="356" fill={WHITE} fontSize="11" fontWeight="700">
-          Shop local, save more
+          Shop local
         </text>
         <text x="226" y="372" fill={BLUE_SOFT} fontSize="8">
-          Free delivery on your first order
+          Delivered in minutes
         </text>
         <circle cx="378" cy="360" r="18" fill={ORANGE} opacity="0.85" />
 

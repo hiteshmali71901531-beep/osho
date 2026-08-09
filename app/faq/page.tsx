@@ -7,17 +7,18 @@ import { Container } from "@/components/ui/Container";
 import { HeadsetIcon, MailIcon, PhoneIcon } from "@/components/brand/Icons";
 import { allFaqs, faqGroups } from "@/lib/content/faqs";
 import { breadcrumbSchema, faqSchema, JsonLd } from "@/lib/jsonld";
-import { site } from "@/lib/site";
+import { legalVersion, site, telHref } from "@/lib/site";
+
+const description =
+  "Owsho Seller FAQs — getting started, KYC and documents, catalogue, orders and delivery, payments and plans, returns, account support, and grievance redressal.";
 
 export const metadata: Metadata = {
-  title: "FAQ",
-  description:
-    "Answers to the questions sellers ask most about OWSHO — cost, documents, GST, delivery, returns, commission, payout timing and support.",
+  title: "Seller FAQs",
+  description,
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "FAQ | OWSHO",
-    description:
-      "Cost, documents, GST, delivery, returns, commission, payouts and support — answered.",
+    title: "Seller FAQs | Owsho",
+    description,
     url: "/faq",
   },
 };
@@ -28,18 +29,18 @@ export default function FaqPage() {
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "FAQ", path: "/faq" },
+          { name: "Seller FAQs", path: "/faq" },
         ])}
       />
       <JsonLd data={faqSchema(allFaqs)} />
 
       <PageHero
-        eyebrow="FAQ"
-        title="Questions sellers actually ask"
-        description="Grouped by topic and answered directly. If something here is still unclear, seller support will answer it on the phone — that is what they are for."
+        eyebrow={`Seller FAQs · Version ${legalVersion.sellerFaqs.version}`}
+        title="Questions sellers ask about Owsho"
+        description="Grouped by topic and answered directly. Anything that touches your legal position also appears in the Seller Terms of Service."
         breadcrumb={[
           { name: "Home", href: "/" },
-          { name: "FAQ", href: "/faq" },
+          { name: "Seller FAQs", href: "/faq" },
         ]}
       />
 
@@ -83,9 +84,9 @@ export default function FaqPage() {
                   Still have a question?
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-600">
-                  Seller support answers the phone during business hours, and
-                  every new shop gets a named onboarding contact for the first
-                  month.
+                  Sellers can use the available seller support channels, or
+                  contact us directly. Complaints that support cannot resolve go
+                  to our Grievance Officer.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <a
@@ -99,17 +100,17 @@ export default function FaqPage() {
                     <span className="break-all">{site.email}</span>
                   </a>
                   <a
-                    href={`tel:${site.phone.replace(/\s/g, "")}`}
+                    href={telHref(site.phone)}
                     className="inline-flex h-11 items-center gap-2 rounded-pill border-2 border-brand-600 px-5 text-sm font-semibold text-brand-700 transition-colors hover:bg-brand-50"
                   >
                     <PhoneIcon className="h-4.5 w-4.5" />
                     {site.phone}
                   </a>
                   <Link
-                    href="/seller-requirements"
+                    href="/terms"
                     className="inline-flex h-11 items-center rounded-pill px-5 text-sm font-semibold text-brand-700 hover:bg-brand-50"
                   >
-                    Read the requirements
+                    Read the Seller Terms
                   </Link>
                 </div>
               </aside>

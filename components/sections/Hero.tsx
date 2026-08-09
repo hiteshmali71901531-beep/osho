@@ -1,20 +1,8 @@
 import { HeroScene } from "@/components/illustrations/HeroScene";
-import {
-  ArrowRightIcon,
-  ShieldIcon,
-  StoreIcon,
-  TruckIcon,
-  WalletIcon,
-} from "@/components/brand/Icons";
+import { ArrowRightIcon } from "@/components/brand/Icons";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-
-const trustPoints = [
-  { label: "Local Shops", Icon: StoreIcon },
-  { label: "Secure Payments", Icon: ShieldIcon },
-  { label: "Fast Delivery", Icon: TruckIcon },
-  { label: "Easy Returns", Icon: WalletIcon },
-];
+import { heroTrustPoints } from "@/lib/content/home";
 
 export function Hero() {
   return (
@@ -35,27 +23,27 @@ export function Hero() {
         <div className="relative grid items-center gap-10 pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pt-16">
           <div>
             <h1 className="max-w-xl text-4xl leading-[1.12] font-bold text-balance sm:text-5xl lg:text-[3.4rem]">
-              Empowering Local Businesses.{" "}
-              <span className="text-accent-400">Enriching Communities.</span>
+              Local commerce,{" "}
+              <span className="text-accent-400">delivered in minutes.</span>
             </h1>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-brand-100 text-pretty sm:text-lg">
-              OWSHO connects you with local shops, great products, and a
-              community you can trust — and gives every shop owner a place
-              online.
+              Owsho connects nearby stores to customers who want it all — the
+              trust of a local seller, and the convenience of delivery in
+              minutes.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/categories" variant="accent" size="lg">
-                Explore shops
+                What you can find
                 <ArrowRightIcon className="h-5 w-5" />
               </ButtonLink>
               <ButtonLink href="/become-a-seller" variant="ghost-light" size="lg">
-                Become a seller
+                Sell on Owsho
               </ButtonLink>
             </div>
 
             <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
-              {trustPoints.map(({ label, Icon }) => (
+              {heroTrustPoints.map(({ label, Icon }) => (
                 <li key={label} className="flex items-center gap-2 text-sm">
                   <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-500 text-ink-900">
                     <Icon className="h-4 w-4" />

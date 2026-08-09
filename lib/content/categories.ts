@@ -1,112 +1,54 @@
 export type Category = {
   slug: string;
   name: string;
-  productCount: string;
   blurb: string;
-  subcategories: string[];
-  /** Typical commission band shown on the categories page. */
-  commission: string;
 };
 
 /**
- * TODO(owsho): confirm product counts and commission bands with the
- * category/pricing team before launch. Everything else is copy-safe.
+ * The seven categories Owsho carries, taken verbatim from the approved About
+ * Us copy ("What You Can Find on Owsho"). Product counts and commission bands
+ * are deliberately absent — Owsho has published no such numbers.
  */
 export const categories: Category[] = [
   {
-    slug: "fashion",
-    name: "Fashion",
-    productCount: "1200+ Products",
-    blurb:
-      "Everyday wear, ethnic collections and accessories from neighbourhood boutiques and tailoring studios.",
-    subcategories: [
-      "Men's clothing",
-      "Women's clothing",
-      "Kids & baby",
-      "Footwear",
-      "Bags & wallets",
-      "Watches & jewellery",
-    ],
-    commission: "8–12%",
+    slug: "grocery-kitchen",
+    name: "Grocery & Kitchen",
+    blurb: "Everyday essentials, straight from local stores you already trust.",
   },
   {
-    slug: "grocery",
-    name: "Grocery",
-    productCount: "2500+ Products",
+    slug: "snacks-drinks",
+    name: "Snacks & Drinks",
     blurb:
-      "Daily essentials, fresh produce and pantry staples from kirana stores within delivery range.",
-    subcategories: [
-      "Fruits & vegetables",
-      "Staples & grains",
-      "Dairy & bakery",
-      "Snacks & beverages",
-      "Household care",
-      "Personal care",
-    ],
-    commission: "4–7%",
+      "From quick cravings to stocking up, your favourite snacks and drinks are just an order away.",
   },
   {
-    slug: "home-living",
-    name: "Home & Living",
-    productCount: "1800+ Products",
+    slug: "fashion-lifestyle",
+    name: "Fashion & Lifestyle",
     blurb:
-      "Furniture, décor and kitchenware from local workshops, carpenters and homeware dealers.",
-    subcategories: [
-      "Furniture",
-      "Home décor",
-      "Kitchen & dining",
-      "Bed & bath",
-      "Storage & organisation",
-      "Lighting",
-    ],
-    commission: "7–11%",
+      "Everyday style or something for an occasion — local fashion sellers, now easier to shop from.",
   },
   {
-    slug: "beauty",
-    name: "Beauty",
-    productCount: "950+ Products",
+    slug: "beauty-personal-care",
+    name: "Beauty & Personal Care",
     blurb:
-      "Skincare, haircare and grooming ranges from licensed retailers and local wellness brands.",
-    subcategories: [
-      "Skincare",
-      "Haircare",
-      "Makeup",
-      "Fragrances",
-      "Men's grooming",
-      "Ayurveda & wellness",
-    ],
-    commission: "9–13%",
+      "Skincare, haircare, and personal essentials from sellers who know their products.",
   },
   {
-    slug: "electronics",
-    name: "Electronics",
-    productCount: "1100+ Products",
+    slug: "household-items",
+    name: "Household Items",
     blurb:
-      "Mobiles, accessories and small appliances from authorised dealers and service centres.",
-    subcategories: [
-      "Mobiles & tablets",
-      "Audio",
-      "Computer accessories",
-      "Small appliances",
-      "Smart home",
-      "Cables & chargers",
-    ],
-    commission: "3–6%",
+      "The everyday things every home needs, from stores in your own neighbourhood.",
   },
   {
-    slug: "sports",
-    name: "Sports",
-    productCount: "780+ Products",
+    slug: "sports-stationery",
+    name: "Sports & Stationery",
     blurb:
-      "Fitness gear, team kit and outdoor equipment from sports retailers and academies.",
-    subcategories: [
-      "Fitness equipment",
-      "Team sports",
-      "Cycling",
-      "Outdoor & camping",
-      "Sportswear",
-      "Nutrition",
-    ],
-    commission: "6–10%",
+      "Gear for training and playing, and stationery for work or school — all from local sellers.",
+  },
+  {
+    slug: "pooja-store",
+    name: "Pooja Store",
+    blurb:
+      "Everything needed for daily rituals and celebrations, sourced from trusted local sellers.",
   },
 ];

@@ -15,7 +15,7 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-brand-800">
       <Container>
         <div className="flex h-18 items-center justify-between gap-4">
-          <Link href="/" className="shrink-0" aria-label="OWSHO Marketplace — home">
+          <Link href="/" className="shrink-0" aria-label="Owsho — home">
             <Logo tone="dark" />
           </Link>
 

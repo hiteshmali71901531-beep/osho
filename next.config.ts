@@ -14,6 +14,19 @@ const nextConfig: NextConfig = {
     inlineCss: true,
   },
 
+  /**
+   * The pre-launch site carried three marketing routes whose content could not
+   * be sourced from any approved Owsho document. They were removed; these
+   * redirects send anything already linking to them to the real equivalent.
+   */
+  async redirects() {
+    return [
+      { source: "/seller-benefits", destination: "/become-a-seller", permanent: true },
+      { source: "/seller-requirements", destination: "/faq", permanent: true },
+      { source: "/how-it-works", destination: "/express", permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {

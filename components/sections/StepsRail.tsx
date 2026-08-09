@@ -1,9 +1,9 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import type { Step } from "@/lib/content/home";
+import type { Step } from "@/lib/content/types";
 
 /**
- * The numbered four-step rail. The connecting line is a single absolutely
+ * The numbered step rail. The connecting line is a single absolutely
  * positioned element behind the icons rather than per-item pseudo-elements,
  * so it never contributes to layout or shifts on reflow.
  */
@@ -23,10 +23,20 @@ export function StepsRail({
       <Container>
         <SectionHeading eyebrow={eyebrow} title={title} description={description} />
 
-        <ol className="relative mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <ol
+          className={`relative mt-12 grid gap-10 sm:grid-cols-2 lg:gap-6 ${
+            steps.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4"
+          }`}
+        >
+          {/* Inset by half a column so the line starts and ends under the
+              first and last icon rather than the edge of the grid. */}
           <span
             aria-hidden="true"
-            className="absolute top-9 right-[12.5%] left-[12.5%] hidden border-t-2 border-dashed border-brand-200 lg:block"
+            className={`absolute top-9 hidden border-t-2 border-dashed border-brand-200 lg:block ${
+              steps.length === 5
+                ? "right-[10%] left-[10%]"
+                : "right-[12.5%] left-[12.5%]"
+            }`}
           />
           {steps.map((step) => (
             <li

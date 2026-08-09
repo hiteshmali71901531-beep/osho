@@ -3,20 +3,64 @@ import type { Route } from "next";
 /**
  * Single source of truth for site-wide facts.
  *
- * TODO(owsho): confirm the production domain, support email/phone and the
- * real social profile URLs before launch — they feed metadata, JSON-LD,
- * the footer and the sitemap.
+ * Every value here is taken from Owsho's own approved documents (Press Center,
+ * Owsho Express, Privacy Policy, Seller Terms of Service v2.0, Seller Security
+ * v2.0 and the Seller FAQs v2.0). Nothing on this site should state a fact
+ * about the company that is not represented here.
  */
 export const site = {
-  name: "OWSHO Marketplace",
-  shortName: "OWSHO",
+  /** Display brand. The company documents write it "Owsho", not "OWSHO". */
+  name: "Owsho",
+  legalName: "Owsho Market Place Private Limited",
   url: "https://www.owshomarketplace.com",
-  tagline: "Empowering Local Businesses. Enriching Communities.",
+  tagline: "Local commerce, delivered in minutes.",
   description:
-    "OWSHO connects you with local shops, great products, and a community you can trust. Sell online with zero setup cost and reach nearby customers.",
+    "Owsho is a hyperlocal marketplace that brings neighbourhood stores online — connecting customers with nearby sellers and a local delivery network.",
   locale: "en_IN",
-  email: "support@owshomarketplace.com",
-  phone: "+91 00000 00000",
+
+  /** Founded 2024 in Deesa, Gujarat (Press Center). */
+  foundingYear: "2024",
+  cin: "U46901GJ2024PTC155047",
+
+  email: "owshomarketplace@gmail.com",
+  phone: "+91 72858 54918",
+
+  /**
+   * Appointed under the Consumer Protection (E-Commerce) Rules, 2020 and the
+   * Information Technology Rules, 2021 (Seller FAQs #28).
+   */
+  grievanceOfficer: {
+    name: "Kirankumar Amratbhai Panchal",
+    title: "Director & Grievance Officer",
+    email: "owshomarketplace@gmail.com",
+    phone: "+91 97731 93241",
+    acknowledgement: "within 48 hours",
+    resolution: "within one (1) month of receipt",
+  },
+
+  address: {
+    street: "7A Nilkanth Arched, 2nd Floor, Palanpur Highway, Disa Bazar",
+    locality: "Deesa",
+    district: "Banaskantha",
+    region: "Gujarat",
+    postalCode: "385535",
+    country: "India",
+    countryCode: "IN",
+  },
+
+  /** Launch market. Operations are being built out market by market. */
+  serviceArea: "Deesa, Banaskantha, Gujarat",
+
+  /**
+   * TODO(owsho): add the live Play Store and App Store listing URLs. Until
+   * both are set the download band renders without linked store buttons
+   * rather than pointing customers at a dead link.
+   */
+  apps: {
+    android: "",
+    ios: "",
+  },
+
   social: {
     facebook: "https://facebook.com/owshomarketplace",
     instagram: "https://instagram.com/owshomarketplace",
@@ -25,35 +69,59 @@ export const site = {
   },
 } as const;
 
+/** Legal document versions, shown in the header of each policy page. */
+export const legalVersion = {
+  privacy: { version: null, lastUpdated: "August 2026" },
+  terms: { version: "2.0", lastUpdated: "August 2026" },
+  security: { version: "2.0", lastUpdated: "August 2026" },
+  sellerFaqs: { version: "2.0", lastUpdated: "August 2026" },
+} as const;
+
+/** The registered office as a single line, used in the footer and legal pages. */
+export const registeredAddress = `${site.address.street}, ${site.address.locality}, ${site.address.district}, ${site.address.region}, ${site.address.country} – ${site.address.postalCode}`;
+
+/** `tel:` href for a display phone number such as "+91 72858 54918". */
+export function telHref(phone: string): string {
+  return `tel:${phone.replace(/[^\d+]/g, "")}`;
+}
+
 export type NavItem = {
   href: Route;
   label: string;
 };
 
-/** Primary navigation — mirrored in the header, footer and sitemap. */
+/** Primary navigation — mirrored in the header and the mobile panel. */
 export const mainNav: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: "/how-it-works", label: "How It Works" },
-  { href: "/seller-benefits", label: "Seller Benefits" },
-  { href: "/seller-requirements", label: "Requirements" },
+  { href: "/about", label: "About" },
   { href: "/categories", label: "Categories" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/express", label: "Owsho Express" },
+  { href: "/careers", label: "Careers" },
+  { href: "/faq", label: "Seller FAQs" },
 ];
 
 export const sellerCta = {
   href: "/become-a-seller" as Route,
-  label: "Become a Seller",
+  label: "Sell on Owsho",
 };
 
-/** Every public route, used to generate the sitemap. */
+/** Every indexable public route, used to generate the sitemap. */
 export const allRoutes: { href: Route; priority: number }[] = [
   { href: "/", priority: 1 },
   { href: "/become-a-seller", priority: 0.9 },
-  { href: "/how-it-works", priority: 0.8 },
-  { href: "/seller-benefits", priority: 0.8 },
-  { href: "/seller-requirements", priority: 0.7 },
+  { href: "/about", priority: 0.8 },
+  { href: "/express", priority: 0.8 },
   { href: "/categories", priority: 0.7 },
+  { href: "/delivery-partner", priority: 0.7 },
+  { href: "/warehouse-partner", priority: 0.7 },
   { href: "/faq", priority: 0.6 },
+  { href: "/contact", priority: 0.6 },
+  { href: "/careers", priority: 0.5 },
+  { href: "/press", priority: 0.5 },
+  { href: "/values", priority: 0.4 },
+  { href: "/privacy", priority: 0.3 },
+  { href: "/terms", priority: 0.3 },
+  { href: "/security", priority: 0.3 },
 ];
 
 export function absoluteUrl(path: string): string {

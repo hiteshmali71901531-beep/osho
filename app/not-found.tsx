@@ -28,7 +28,7 @@ export default function NotFound() {
               Back to home
             </ButtonLink>
             <ButtonLink href="/become-a-seller" variant="ghost-light" size="lg">
-              Become a seller
+              Sell on Owsho
             </ButtonLink>
           </div>
 

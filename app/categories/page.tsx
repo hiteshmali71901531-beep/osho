@@ -1,22 +1,27 @@
 import type { Metadata } from "next";
 import { CategoryArt } from "@/components/illustrations/CategoryArt";
+import { AppBand } from "@/components/sections/AppBand";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
-import { Badge } from "@/components/ui/Card";
-import { CheckIcon } from "@/components/brand/Icons";
 import { categories } from "@/lib/content/categories";
-import { breadcrumbSchema, JsonLd } from "@/lib/jsonld";
+import {
+  breadcrumbSchema,
+  itemListSchema,
+  JsonLd,
+  webPageSchema,
+} from "@/lib/jsonld";
+
+const description =
+  "What you can find on Owsho: Grocery & Kitchen, Snacks & Drinks, Fashion & Lifestyle, Beauty & Personal Care, Household Items, Sports & Stationery and Pooja Store — all from local sellers.";
 
 export const metadata: Metadata = {
   title: "Categories",
-  description:
-    "Every category you can sell in on OWSHO — Fashion, Grocery, Home & Living, Beauty, Electronics and Sports — with subcategories and typical commission bands.",
+  description,
   alternates: { canonical: "/categories" },
   openGraph: {
-    title: "Categories | OWSHO",
-    description:
-      "Fashion, Grocery, Home & Living, Beauty, Electronics and Sports — subcategories and commission bands.",
+    title: "Categories | Owsho",
+    description,
     url: "/categories",
   },
 };
@@ -24,6 +29,23 @@ export const metadata: Metadata = {
 export default function CategoriesPage() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema("CollectionPage", {
+          path: "/categories",
+          name: "Categories",
+          description,
+        })}
+      />
+      <JsonLd
+        data={itemListSchema(
+          "Owsho shopping categories",
+          categories.map((category) => ({
+            name: category.name,
+            description: category.blurb,
+            path: `/categories#${category.slug}`,
+          })),
+        )}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
@@ -33,8 +55,8 @@ export default function CategoriesPage() {
 
       <PageHero
         eyebrow="Categories"
-        title="Six categories, hundreds of local shops"
-        description="Whatever you stock, there is a place for it. Each category has its own commission band, listing rules and licence requirements — all listed here before you apply."
+        title="What you can find on Owsho"
+        description="Seven categories of everyday essentials, all stocked and sold by businesses in your own neighbourhood."
         breadcrumb={[
           { name: "Home", href: "/" },
           { name: "Categories", href: "/categories" },
@@ -59,47 +81,23 @@ export default function CategoriesPage() {
             </ul>
           </nav>
 
-          <div className="space-y-8">
+          <div className="grid gap-6 lg:grid-cols-2">
             {categories.map((category) => (
               <article
                 key={category.slug}
                 id={category.slug}
-                className="scroll-mt-24 rounded-card border border-ink-100 bg-white p-6 shadow-card sm:p-8"
+                className="flex scroll-mt-24 gap-6 rounded-card border border-ink-100 bg-white p-6 shadow-card transition-shadow hover:shadow-lift sm:p-8"
               >
-                <div className="grid gap-6 sm:grid-cols-[auto_1fr] sm:gap-8">
-                  <span className="grid h-24 w-24 place-items-center rounded-card bg-brand-50 p-4">
-                    <CategoryArt slug={category.slug} />
-                  </span>
-
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <h2 className="text-2xl font-bold text-brand-950">
-                        {category.name}
-                      </h2>
-                      <Badge tone="neutral">{category.productCount}</Badge>
-                      <Badge tone="accent">
-                        Commission {category.commission}
-                      </Badge>
-                    </div>
-                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-500">
-                      {category.blurb}
-                    </p>
-
-                    <h3 className="mt-6 text-xs font-semibold tracking-[0.14em] text-ink-500 uppercase">
-                      Subcategories
-                    </h3>
-                    <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                      {category.subcategories.map((sub) => (
-                        <li
-                          key={sub}
-                          className="flex items-center gap-2 text-sm text-ink-600"
-                        >
-                          <CheckIcon className="h-4 w-4 shrink-0 text-brand-600" />
-                          {sub}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <span className="grid h-20 w-20 shrink-0 place-items-center rounded-card bg-brand-50 p-3.5">
+                  <CategoryArt slug={category.slug} />
+                </span>
+                <div>
+                  <h2 className="text-xl font-bold text-balance text-brand-950">
+                    {category.name}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-500">
+                    {category.blurb}
+                  </p>
                 </div>
               </article>
             ))}
@@ -107,9 +105,11 @@ export default function CategoriesPage() {
         </Container>
       </section>
 
+      <AppBand />
+
       <CtaBand
-        title="Do not see your category?"
-        description="We add categories as sellers ask for them. Apply and tell us what you stock — the onboarding team will let you know where it fits."
+        title="Sell in any of these categories"
+        description="Eligible products from permitted categories can be listed, subject to applicable laws and Owsho marketplace policies. Free listing, no hidden charges."
       />
     </>
   );

@@ -3,48 +3,36 @@
 import { redirect } from "next/navigation";
 
 /**
- * Form endpoints for the newsletter and seller-application forms.
+ * Endpoint for the seller onboarding form.
  *
- * TODO(owsho): wire these to the real CRM / mailing provider. Both actions
- * currently validate the payload and log it server-side, then redirect to the
- * static confirmation page. Because they redirect rather than return state,
- * the forms work with JavaScript disabled and the pages stay fully static.
+ * TODO(owsho): wire this to the real CRM / seller onboarding queue. It
+ * currently validates the payload and logs it server-side, then redirects to
+ * the static confirmation page. Because it redirects rather than returning
+ * state, the form works with JavaScript disabled and the page stays static.
  */
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-export async function subscribeToNewsletter(formData: FormData) {
-  const email = String(formData.get("email") ?? "").trim();
-
-  if (!EMAIL.test(email)) {
-    redirect("/thank-you?status=invalid");
-  }
-
-  console.info("[owsho] newsletter signup", { email });
-  redirect("/thank-you?status=subscribed");
-}
-
+/** Mirrors the approved "Become an Owsho Seller" form. */
 export async function submitSellerApplication(formData: FormData) {
   const application = {
-    shopName: String(formData.get("shopName") ?? "").trim(),
-    ownerName: String(formData.get("ownerName") ?? "").trim(),
-    email: String(formData.get("email") ?? "").trim(),
-    phone: String(formData.get("phone") ?? "").trim(),
-    city: String(formData.get("city") ?? "").trim(),
-    pincode: String(formData.get("pincode") ?? "").trim(),
+    fullName: String(formData.get("fullName") ?? "").trim(),
+    businessName: String(formData.get("businessName") ?? "").trim(),
+    mobile: String(formData.get("mobile") ?? "").trim(),
     category: String(formData.get("category") ?? "").trim(),
-    message: String(formData.get("message") ?? "").trim(),
+    city: String(formData.get("city") ?? "").trim(),
+    storeAddress: String(formData.get("storeAddress") ?? "").trim(),
+    interest: String(formData.get("interest") ?? "").trim(),
   };
 
-  const missing =
-    !application.shopName ||
-    !application.ownerName ||
-    !EMAIL.test(application.email) ||
-    application.phone.replace(/\D/g, "").length < 10 ||
+  const invalid =
+    !application.fullName ||
+    !application.businessName ||
+    application.mobile.replace(/\D/g, "").length < 10 ||
+    !application.category ||
     !application.city ||
-    !/^\d{6}$/.test(application.pincode);
+    !application.storeAddress ||
+    !application.interest;
 
-  if (missing) {
+  if (invalid) {
     redirect("/thank-you?status=invalid");
   }
 

@@ -1,14 +1,22 @@
+import type { Route } from "next";
 import { ArrowRightIcon } from "@/components/brand/Icons";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Decoration } from "@/components/sections/PageHero";
 
+type Action = { href: Route; label: string };
+
+/** The blue closing band. Defaults to the seller call to action. */
 export function CtaBand({
-  title = "Ready to put your shop online?",
-  description = "Registration is free, verification takes about 48 hours, and you only pay when you sell. Start with your shop name and pin code.",
+  title = "Your shop. Online.",
+  description = "Give your customers the convenience of shopping from you, wherever they are. Sign up and start selling on Owsho — free listing, no hidden charges.",
+  primary = { href: "/become-a-seller", label: "Sell on Owsho" },
+  secondary = { href: "/faq", label: "Read the seller FAQs" },
 }: {
   title?: string;
   description?: string;
+  primary?: Action;
+  secondary?: Action | null;
 }) {
   return (
     <section className="relative overflow-hidden bg-brand-800 py-16 text-white sm:py-20">
@@ -24,13 +32,15 @@ export function CtaBand({
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-3">
-            <ButtonLink href="/become-a-seller" variant="accent" size="lg">
-              Start selling
+            <ButtonLink href={primary.href} variant="accent" size="lg">
+              {primary.label}
               <ArrowRightIcon className="h-5 w-5" />
             </ButtonLink>
-            <ButtonLink href="/seller-requirements" variant="ghost-light" size="lg">
-              Check requirements
-            </ButtonLink>
+            {secondary ? (
+              <ButtonLink href={secondary.href} variant="ghost-light" size="lg">
+                {secondary.label}
+              </ButtonLink>
+            ) : null}
           </div>
         </div>
       </Container>

@@ -12,15 +12,11 @@ export const metadata: Metadata = {
 const MESSAGES = {
   applied: {
     heading: "Application received",
-    body: "Thank you — your shop details are with the onboarding team. Someone will call you within one working day to complete verification. Keep your PAN, bank proof and shop proof handy for that call.",
-  },
-  subscribed: {
-    heading: "You're on the list",
-    body: "Thank you for subscribing. You'll hear from us about once a month with seller tips, new category launches and campaign dates — and you can unsubscribe from any email.",
+    body: "Thank you — your details are with the Owsho team. We will review them and get in touch with you regarding the next steps, including any verification and documentation we need.",
   },
   invalid: {
     heading: "We couldn't read that",
-    body: "Something in the form didn't look right — usually an email address or a pin code. Please go back and try again, or call seller support and we'll take the details over the phone.",
+    body: "Something in the form didn't look right — usually the mobile number or a missing required field. Please go back and try again, or write to us and we'll take the details over email.",
   },
 } as const;
 
@@ -31,10 +27,7 @@ export default async function ThankYouPage({
 }: PageProps<"/thank-you">) {
   const params = await searchParams;
   const raw = Array.isArray(params.status) ? params.status[0] : params.status;
-  const status: Status =
-    raw === "applied" || raw === "subscribed" || raw === "invalid"
-      ? raw
-      : "subscribed";
+  const status: Status = raw === "invalid" ? "invalid" : "applied";
   const message = MESSAGES[status];
   const isError = status === "invalid";
 
@@ -60,7 +53,7 @@ export default async function ThankYouPage({
               Back to home
             </ButtonLink>
             <ButtonLink href="/faq" variant="ghost-light" size="lg">
-              Read the FAQ
+              Read the seller FAQs
             </ButtonLink>
           </div>
         </div>

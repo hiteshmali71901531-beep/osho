@@ -10,15 +10,41 @@ import {
   TwitterIcon,
 } from "@/components/brand/Icons";
 import { Container } from "@/components/ui/Container";
-import { categories } from "@/lib/content/categories";
-import { site } from "@/lib/site";
+import { registeredAddress, site, telHref } from "@/lib/site";
 
-const quickLinks: { href: Route; label: string }[] = [
-  { href: "/", label: "Home" },
-  { href: "/become-a-seller", label: "Become a Seller" },
-  { href: "/how-it-works", label: "How It Works" },
-  { href: "/seller-benefits", label: "Seller Benefits" },
-  { href: "/seller-requirements", label: "Seller Requirements" },
+type LinkGroup = { heading: string; links: { href: Route; label: string }[] };
+
+/** Mirrors the approved Owsho footer structure. */
+const groups: LinkGroup[] = [
+  {
+    heading: "Company",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/careers", label: "Careers" },
+      { href: "/press", label: "Press" },
+      { href: "/values", label: "Values" },
+    ],
+  },
+  {
+    heading: "For consumers",
+    links: [
+      { href: "/categories", label: "Categories" },
+      { href: "/faq", label: "Seller FAQs" },
+      { href: "/privacy", label: "Privacy" },
+      { href: "/terms", label: "Terms" },
+      { href: "/security", label: "Security" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
+  {
+    heading: "For partners",
+    links: [
+      { href: "/express", label: "Owsho Express" },
+      { href: "/become-a-seller", label: "Sell on Owsho" },
+      { href: "/warehouse-partner", label: "Warehouse Partner" },
+      { href: "/delivery-partner", label: "Delivery Partner" },
+    ],
+  },
 ];
 
 const socials = [
@@ -36,10 +62,32 @@ export function Footer() {
           <div className="max-w-xs">
             <Logo tone="dark" />
             <p className="mt-4 text-sm leading-relaxed">
-              Empowering local businesses and enriching communities through
-              technology and trust.
+              Bringing local businesses online — the trust of a local seller,
+              with the convenience of delivery in minutes.
             </p>
-            <ul className="mt-5 flex gap-3">
+
+            <ul className="mt-5 space-y-2.5 text-sm">
+              <li className="flex items-center gap-2">
+                <MailIcon className="h-4 w-4 shrink-0 text-accent-400" />
+                <a
+                  href={`mailto:${site.email}`}
+                  className="break-all hover:text-accent-300"
+                >
+                  {site.email}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <PhoneIcon className="h-4 w-4 shrink-0 text-accent-400" />
+                <a href={telHref(site.phone)} className="hover:text-accent-300">
+                  {site.phone}
+                </a>
+              </li>
+            </ul>
+
+            <h2 className="mt-6 text-sm font-semibold tracking-wide text-white">
+              Follow us
+            </h2>
+            <ul className="mt-3 flex gap-3">
               {socials.map(({ href, label, Icon }) => (
                 <li key={label}>
                   <a
@@ -56,92 +104,53 @@ export function Footer() {
             </ul>
           </div>
 
-          <nav aria-labelledby="footer-quick">
-            <h2
-              id="footer-quick"
-              className="text-sm font-semibold tracking-wide text-white"
+          {groups.map((group) => (
+            <nav
+              key={group.heading}
+              aria-labelledby={`footer-${group.heading.replace(/\s+/g, "-").toLowerCase()}`}
             >
-              Quick Links
-            </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="hover:text-accent-300">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-labelledby="footer-categories">
-            <h2
-              id="footer-categories"
-              className="text-sm font-semibold tracking-wide text-white"
-            >
-              Categories
-            </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              {categories.slice(0, 6).map((category) => (
-                <li key={category.slug}>
-                  <Link
-                    href={{ pathname: "/categories", hash: category.slug }}
-                    className="hover:text-accent-300"
-                  >
-                    {category.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div>
-            <h2 className="text-sm font-semibold tracking-wide text-white">
-              Help &amp; Support
-            </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              <li>
-                <Link href="/faq" className="hover:text-accent-300">
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-it-works" className="hover:text-accent-300">
-                  Shipping &amp; Delivery
-                </Link>
-              </li>
-              <li>
-                <Link href="/seller-requirements" className="hover:text-accent-300">
-                  Returns &amp; Refunds
-                </Link>
-              </li>
-              <li className="flex items-center gap-2 pt-1">
-                <MailIcon className="h-4 w-4 shrink-0 text-accent-400" />
-                <a
-                  href={`mailto:${site.email}`}
-                  className="break-all hover:text-accent-300"
-                >
-                  {site.email}
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <PhoneIcon className="h-4 w-4 shrink-0 text-accent-400" />
-                <a
-                  href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className="hover:text-accent-300"
-                >
-                  {site.phone}
-                </a>
-              </li>
-            </ul>
-          </div>
+              <h2
+                id={`footer-${group.heading.replace(/\s+/g, "-").toLowerCase()}`}
+                className="text-sm font-semibold tracking-wide text-white"
+              >
+                {group.heading}
+              </h2>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="hover:text-accent-300">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-white/10 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {site.name}. All rights reserved.
+        <div className="border-t border-white/10 py-8 text-xs leading-relaxed">
+          <p className="text-brand-200">
+            By continuing past this page you agree to our{" "}
+            <Link href="/terms" className="underline hover:text-accent-300">
+              Terms
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy" className="underline hover:text-accent-300">
+              Privacy policy
+            </Link>
+            . All trademarks are properties of their respective owners.
           </p>
-          <p>Vocal for Local — built for India&rsquo;s neighbourhood shops.</p>
+
+          <dl className="mt-5 grid gap-x-8 gap-y-2 sm:grid-cols-[auto_1fr]">
+            <dt className="font-semibold text-white">Registered office</dt>
+            <dd className="text-brand-200">{registeredAddress}</dd>
+            <dt className="font-semibold text-white">CIN</dt>
+            <dd className="text-brand-200">{site.cin}</dd>
+          </dl>
+
+          <p className="mt-5 text-brand-200">
+            © {new Date().getFullYear()} {site.legalName}. All rights reserved.
+          </p>
         </div>
       </Container>
     </footer>
