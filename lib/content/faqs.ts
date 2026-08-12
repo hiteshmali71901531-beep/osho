@@ -174,7 +174,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Can I contact Owsho support?",
         answer:
-          "Yes. Sellers can use the available seller support channels or contact owshomarketplace@gmail.com — Owsho Market Place Private Limited, 7A Nilkanth Arched, 2nd Floor, Palanpur Highway, Disa Bazar, Deesa, Banaskantha, Gujarat, India – 385535.",
+          "Yes. Sellers can use the available seller support channels or contact owshomarketplace@gmail.com — Owsho Market Place Private Limited, 7A Nilkanth Arched, 2nd Floor, Palanpur Highway, Disa Bazar, Banaskantha, Gujarat, India – 385535.",
       },
     ],
   },
@@ -186,7 +186,7 @@ export const faqGroups: FaqGroup[] = [
         question:
           "Who do I contact if my complaint is not resolved by regular support?",
         answer:
-          "If your issue is not resolved through the standard seller support channel, you may escalate it to Owsho's designated Grievance Officer, appointed in accordance with the Consumer Protection (E-Commerce) Rules, 2020 and the Information Technology Rules, 2021: Kirankumar Amratbhai Panchal (Director & Grievance Officer), owshomarketplace@gmail.com, +91 97731 93241, 7A Nilkanth Arched, 2nd Floor, Palanpur Highway, Disa Bazar, Deesa, Banaskantha, Gujarat, India – 385535. Grievances will be acknowledged within 48 hours and, where reasonably possible, resolved within one (1) month of receipt, in accordance with applicable law.",
+          "If your issue is not resolved through the standard seller support channel, you may escalate it to Owsho's designated Grievance Officer, appointed in accordance with the Consumer Protection (E-Commerce) Rules, 2020 and the Information Technology Rules, 2021: Kirankumar Amratbhai Panchal (Director & Grievance Officer), owshomarketplace@gmail.com, +91 97731 93241, 7A Nilkanth Arched, 2nd Floor, Palanpur Highway, Disa Bazar, Banaskantha, Gujarat, India – 385535. Grievances will be acknowledged within 48 hours and, where reasonably possible, resolved within one (1) month of receipt, in accordance with applicable law.",
       },
       {
         question: "What happens if my complaint still isn't resolved?",

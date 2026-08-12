@@ -14,6 +14,7 @@ import { builtOnLocalCommerce } from "@/lib/content/about";
 import { networkPillars } from "@/lib/content/home";
 import { expressSteps } from "@/lib/content/express";
 import { sellerBenefits } from "@/lib/content/seller";
+import { JsonLd, mobileAppSchema } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -25,6 +26,8 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={mobileAppSchema("customer")} />
+
       <Hero />
       <FeatureStrip />
       <CategoryGrid />

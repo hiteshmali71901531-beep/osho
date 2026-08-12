@@ -96,6 +96,29 @@ export function organizationSchema() {
   };
 }
 
+/**
+ * A published mobile app. Owsho ships two — the customer app and the seller
+ * app — so each page advertises the one it is actually about.
+ */
+export function mobileAppSchema(app: "customer" | "seller") {
+  const { name, ios, android } = site.apps[app];
+  const stores = [ios, android].filter(Boolean);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "@id": absoluteUrl(`/#app-${app}`),
+    name,
+    applicationCategory: "ShoppingApplication",
+    operatingSystem: [ios ? "iOS" : null, android ? "Android" : null]
+      .filter(Boolean)
+      .join(", "),
+    installUrl: stores,
+    publisher: { "@id": ORGANIZATION_ID },
+    inLanguage: "en-IN",
+  };
+}
+
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",

@@ -15,11 +15,12 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
           <TableOfContents doc={doc} />
 
           <article className="min-w-0 max-w-3xl">
+            {/* The page's <h1> lives in the PageHero above, so this header
+                carries the document's own title as a caption rather than a
+                second top-level heading. */}
             <header className="border-b border-ink-100 pb-8">
-              <h1 className="text-3xl leading-tight font-bold text-balance text-brand-950 sm:text-4xl">
-                {doc.title}
-              </h1>
-              <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-500">
+              <p className="text-sm font-semibold text-brand-950">{doc.title}</p>
+              <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-500">
                 {doc.version ? <span>Version {doc.version}</span> : null}
                 <span>Last updated: {doc.lastUpdated}</span>
               </p>

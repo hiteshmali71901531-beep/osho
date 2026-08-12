@@ -40,8 +40,8 @@ export const site = {
 
   address: {
     street: "7A Nilkanth Arched, 2nd Floor, Palanpur Highway, Disa Bazar",
-    locality: "Deesa",
-    district: "Banaskantha",
+    /** District, used as the locality line of the registered office. */
+    locality: "Banaskantha",
     region: "Gujarat",
     postalCode: "385535",
     country: "India",
@@ -49,23 +49,33 @@ export const site = {
   },
 
   /** Launch market. Operations are being built out market by market. */
-  serviceArea: "Deesa, Banaskantha, Gujarat",
+  serviceArea: "Banaskantha, Gujarat",
 
   /**
-   * TODO(owsho): add the live Play Store and App Store listing URLs. Until
-   * both are set the download band renders without linked store buttons
-   * rather than pointing customers at a dead link.
+   * Live App Store listings. Android builds are not published yet, so the
+   * Play Store fields stay empty and the download band renders those badges
+   * as inert text rather than pointing anyone at a dead link.
+   *
+   * TODO(owsho): add the Play Store URLs when the Android apps go live.
    */
   apps: {
-    android: "",
-    ios: "",
+    customer: {
+      name: "Owsho: Shop Local in Minutes",
+      ios: "https://apps.apple.com/in/app/owsho-shop-local-in-minutes/id6755228354",
+      android: "",
+    },
+    seller: {
+      name: "Owsho Seller",
+      ios: "https://apps.apple.com/in/app/owsho-seller/id6755288019",
+      android: "",
+    },
   },
 
   social: {
-    facebook: "https://facebook.com/owshomarketplace",
-    instagram: "https://instagram.com/owshomarketplace",
-    twitter: "https://twitter.com/owshomarket",
-    linkedin: "https://linkedin.com/company/owshomarketplace",
+    instagram: "https://www.instagram.com/owshoapp",
+    instagramSellers: "https://www.instagram.com/sellonowsho",
+    facebook: "https://www.facebook.com/share/14naxZL4KDh/",
+    linkedin: "https://www.linkedin.com/company/owhso-marketplace/",
   },
 } as const;
 
@@ -78,7 +88,7 @@ export const legalVersion = {
 } as const;
 
 /** The registered office as a single line, used in the footer and legal pages. */
-export const registeredAddress = `${site.address.street}, ${site.address.locality}, ${site.address.district}, ${site.address.region}, ${site.address.country} – ${site.address.postalCode}`;
+export const registeredAddress = `${site.address.street}, ${site.address.locality}, ${site.address.region}, ${site.address.country} – ${site.address.postalCode}`;
 
 /** `tel:` href for a display phone number such as "+91 72858 54918". */
 export function telHref(phone: string): string {

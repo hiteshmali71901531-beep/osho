@@ -14,7 +14,7 @@ import {
 import { site } from "@/lib/site";
 
 const description =
-  "Contact Owsho Market Place Private Limited — seller support, grievance redressal and media enquiries, plus our registered office in Deesa, Banaskantha, Gujarat.";
+  "Contact Owsho Market Place Private Limited — seller support, grievance redressal and media enquiries, plus our registered office in Banaskantha, Gujarat.";
 
 export const metadata: Metadata = {
   title: "Contact Us",

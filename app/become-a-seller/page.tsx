@@ -10,7 +10,14 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { categories } from "@/lib/content/categories";
 import { sellerBenefits, sellerDocuments, sellerSteps } from "@/lib/content/seller";
-import { breadcrumbSchema, howToSchema, JsonLd, webPageSchema } from "@/lib/jsonld";
+import { AppBand } from "@/components/sections/AppBand";
+import {
+  breadcrumbSchema,
+  howToSchema,
+  JsonLd,
+  mobileAppSchema,
+  webPageSchema,
+} from "@/lib/jsonld";
 import { site } from "@/lib/site";
 
 const description =
@@ -66,6 +73,7 @@ export default function BecomeASellerPage() {
           sellerSteps,
         )}
       />
+      <JsonLd data={mobileAppSchema("seller")} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
@@ -160,6 +168,12 @@ export default function BecomeASellerPage() {
             .
           </p>
         }
+      />
+
+      <AppBand
+        app="seller"
+        title="Run your shop from the Owsho Seller app"
+        description="Manage your catalogue, availability and orders from your phone."
       />
 
       {/* Application form */}

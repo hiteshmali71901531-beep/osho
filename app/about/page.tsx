@@ -9,7 +9,12 @@ import { ButtonLink } from "@/components/ui/Button";
 import { aboutHero, appBand, builtOnLocalCommerce, ourStory } from "@/lib/content/about";
 import { categories } from "@/lib/content/categories";
 import { networkPillars } from "@/lib/content/home";
-import { breadcrumbSchema, JsonLd, webPageSchema } from "@/lib/jsonld";
+import {
+  breadcrumbSchema,
+  JsonLd,
+  mobileAppSchema,
+  webPageSchema,
+} from "@/lib/jsonld";
 
 const description = aboutHero.description;
 
@@ -34,6 +39,7 @@ export default function AboutPage() {
           description,
         })}
       />
+      <JsonLd data={mobileAppSchema("customer")} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
@@ -49,7 +55,11 @@ export default function AboutPage() {
           { name: "Home", href: "/" },
           { name: "About Us", href: "/about" },
         ]}
-      />
+      >
+        <p className="text-2xl leading-tight font-bold text-balance text-accent-400 sm:text-3xl">
+          {aboutHero.banner}
+        </p>
+      </PageHero>
 
       {/* Our story */}
       <section className="py-16 sm:py-20">

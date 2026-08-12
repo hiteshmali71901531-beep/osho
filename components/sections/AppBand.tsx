@@ -2,29 +2,30 @@ import { Container } from "@/components/ui/Container";
 import { Decoration } from "@/components/sections/PageHero";
 import { site } from "@/lib/site";
 
-const stores = [
-  { key: "android", label: "Get it on Google Play", href: site.apps.android },
-  { key: "ios", label: "Download on the App Store", href: site.apps.ios },
-] as const;
-
 const chip =
   "inline-flex h-13 items-center justify-center rounded-pill px-7 text-base font-semibold";
 
 /**
  * "Download the Owsho app" closing band.
  *
- * Store URLs live in `lib/site.ts`. Until a URL is set the badge renders as
- * inert text rather than a link — a store button that goes nowhere costs more
- * trust than it buys.
+ * Store URLs live in `lib/site.ts`, one set per app. A store whose URL is not
+ * set yet renders as inert text rather than a link — a store button that goes
+ * nowhere costs more trust than it buys.
  */
 export function AppBand({
+  app = "customer",
   title = "Download the Owsho app",
   description = "Everything from your local stores, delivered to your doorstep.",
 }: {
+  app?: "customer" | "seller";
   title?: string;
   description?: string;
 }) {
-  const anyLive = stores.some((store) => store.href);
+  const { ios, android } = site.apps[app];
+  const stores = [
+    { key: "ios", label: "Download on the App Store", href: ios },
+    { key: "android", label: "Get it on Google Play", href: android },
+  ];
 
   return (
     <section className="relative overflow-hidden bg-brand-800 py-16 text-white sm:py-20">
@@ -55,20 +56,15 @@ export function AppBand({
               ) : (
                 <span
                   key={store.key}
-                  className={`${chip} border-2 border-white/40 text-brand-100`}
+                  className={`${chip} border-2 border-white/40 text-brand-200`}
                 >
                   {store.label}
+                  <span className="ml-2 text-sm font-normal">(coming soon)</span>
                 </span>
               ),
             )}
           </div>
         </div>
-
-        {anyLive ? null : (
-          <p className="relative mt-6 text-sm text-brand-200">
-            Store links are being published — check back shortly.
-          </p>
-        )}
       </Container>
     </section>
   );

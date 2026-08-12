@@ -5,7 +5,14 @@
 
 export const aboutHero = {
   eyebrow: "About Owsho",
-  title: "Local commerce, delivered in minutes.",
+  /**
+   * The approved hero tagline is "Local commerce, delivered in minutes." — but
+   * that is already the H1 of the home page, and two pages sharing an H1 makes
+   * both weaker in search. It runs as the banner line below instead, and the
+   * H1 carries the opening clause of the approved sub-line.
+   */
+  title: "Bringing local businesses online",
+  banner: "Local commerce, delivered in minutes.",
   description:
     "Launched with the ambition of bringing local businesses online, Owsho connects nearby stores to customers who want it all — the trust of a local seller, and the convenience of delivery in minutes.",
 };

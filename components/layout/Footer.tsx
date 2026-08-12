@@ -7,7 +7,6 @@ import {
   LinkedinIcon,
   MailIcon,
   PhoneIcon,
-  TwitterIcon,
 } from "@/components/brand/Icons";
 import { Container } from "@/components/ui/Container";
 import { registeredAddress, site, telHref } from "@/lib/site";
@@ -47,10 +46,19 @@ const groups: LinkGroup[] = [
   },
 ];
 
+/**
+ * Two Instagram accounts: the customer-facing brand and the seller programme.
+ * Both are labelled, because identical icons pointing at different audiences
+ * are indistinguishable to anyone using a screen reader or a tooltip.
+ */
 const socials = [
-  { href: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
   { href: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
-  { href: site.social.twitter, label: "X (Twitter)", Icon: TwitterIcon },
+  {
+    href: site.social.instagramSellers,
+    label: "Instagram for sellers",
+    Icon: InstagramIcon,
+  },
+  { href: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
   { href: site.social.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
 ];
 
@@ -89,7 +97,7 @@ export function Footer() {
             </h2>
             <ul className="mt-3 flex gap-3">
               {socials.map(({ href, label, Icon }) => (
-                <li key={label}>
+                <li key={href}>
                   <a
                     href={href}
                     aria-label={label}
