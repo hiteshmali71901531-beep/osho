@@ -55,10 +55,10 @@ export function AppBand({
                 </a>
               ) : (
                 <span
-                  key={store.key}
+                  key="3"
                   className={`${chip} border-2 border-white/40 text-brand-200`}
                 >
-                  {store.label}
+                  label
                   <span className="ml-2 text-sm font-normal">(coming soon)</span>
                 </span>
               ),
