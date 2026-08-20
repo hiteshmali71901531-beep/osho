@@ -100,14 +100,14 @@ export function organizationSchema() {
  * A published mobile app. Owsho ships two — the customer app and the seller
  * app — so each page advertises the one it is actually about.
  */
-export function mobileAppSchema(app: "customer" | "seller") {
-  const { name, ios, android } = site.apps[app];
+export function mobileAppSchema() {
+  const { name, ios, android } = site.apps.seller;
   const stores = [ios, android].filter(Boolean);
 
   return {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
-    "@id": absoluteUrl(`/#app-${app}`),
+    "@id": absoluteUrl("/#app-seller"),
     name,
     applicationCategory: "ShoppingApplication",
     operatingSystem: [ios ? "iOS" : null, android ? "Android" : null]

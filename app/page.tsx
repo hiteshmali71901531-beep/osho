@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowRightIcon, CheckCircleIcon } from "@/components/brand/Icons";
+import { ArrowRightIcon } from "@/components/brand/Icons";
 import { AppBand } from "@/components/sections/AppBand";
 import { CategoryGrid } from "@/components/sections/CategoryGrid";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -13,7 +13,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { builtOnLocalCommerce } from "@/lib/content/about";
 import { networkPillars } from "@/lib/content/home";
 import { expressSteps } from "@/lib/content/express";
-import { sellerBenefits } from "@/lib/content/seller";
+
 import { JsonLd, mobileAppSchema } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={mobileAppSchema("customer")} />
+      <JsonLd data={mobileAppSchema()} />
 
       <Hero />
       <FeatureStrip />
@@ -47,32 +47,17 @@ export default function HomePage() {
         steps={expressSteps}
       />
 
-      {/* Seller pitch */}
+      {/* Seller trust block */}
       <section className="py-16 sm:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
             <div>
               <SectionHeading
                 eyebrow="For shop owners"
-                title="Your shop. Online."
-                description="Give your customers the convenience of shopping from you, wherever they are. Sign up and start selling on Owsho."
+                title="The trust is already yours. We add the reach."
+                description="Every neighbourhood has businesses that customers already know and trust. Owsho helps these local stores go online — keeping that trust alive, while giving sellers the reach of a modern marketplace."
                 align="left"
               />
-              <ul className="mt-8 space-y-4">
-                {sellerBenefits.slice(0, 4).map((benefit) => (
-                  <li key={benefit.title} className="flex gap-3">
-                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
-                    <div>
-                      <h3 className="text-sm font-semibold text-brand-950">
-                        {benefit.title}
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-ink-500">
-                        {benefit.description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
               <ButtonLink
                 href="/become-a-seller"
                 size="lg"
@@ -88,10 +73,10 @@ export default function HomePage() {
                 Built for local commerce
               </p>
               <blockquote className="mt-4 text-lg leading-relaxed font-semibold text-brand-950 text-pretty">
-                “Every neighbourhood has businesses that customers already know
+                &ldquo;Every neighbourhood has businesses that customers already know
                 and trust. Owsho helps these local stores go online — keeping
                 that trust alive, while giving sellers the reach of a modern
-                marketplace.”
+                marketplace.&rdquo;
               </blockquote>
               <p className="mt-5 text-sm leading-relaxed text-ink-500">
                 Free listing. No hidden charges. Onboard your products in

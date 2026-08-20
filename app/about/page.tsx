@@ -39,7 +39,7 @@ export default function AboutPage() {
           description,
         })}
       />
-      <JsonLd data={mobileAppSchema("customer")} />
+      <JsonLd data={mobileAppSchema()} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },

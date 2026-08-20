@@ -59,15 +59,11 @@ export const site = {
    * TODO(owsho): add the Play Store URLs when the Android apps go live.
    */
   apps: {
-    customer: {
-      name: "Owsho: Shop Local in Minutes",
-      ios: "https://apps.apple.com/in/app/owsho-shop-local-in-minutes/id6755228354",
-      android: "",
-    },
     seller: {
       name: "Owsho Seller",
       ios: "https://apps.apple.com/in/app/owsho-seller/id6755288019",
-      android: "",
+      android:
+        "https://play.google.com/store/apps/details?id=com.owsho_seller&hl=en_IN",
     },
   },
 

@@ -1,10 +1,35 @@
 import { HeroScene } from "@/components/illustrations/HeroScene";
-import { ArrowRightIcon } from "@/components/brand/Icons";
+import { ArrowRightIcon, CheckCircleIcon } from "@/components/brand/Icons";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { heroTrustPoints } from "@/lib/content/home";
+import { site } from "@/lib/site";
+
+const sellerPoints = [
+  {
+    title: "Reach your customers nearby",
+    description:
+      "Get your store discovered by customers around you.",
+  },
+  {
+    title: "Grow your business online",
+    description:
+      "Take your existing store online and unlock new sales opportunities.",
+  },
+  {
+    title: "Expand your reach",
+    description:
+      "Reach customers across your city without opening another store.",
+  },
+  {
+    title: "It's simple to get started",
+    description:
+      "Create your store, list your products and start selling online.",
+  },
+];
 
 export function Hero() {
+  const sellerAndroid = site.apps.seller.android;
+
   return (
     <section className="relative overflow-hidden bg-brand-800 pb-24 text-white sm:pb-28">
       {/* Decorative wash. Purely presentational, no layout impact. */}
@@ -23,35 +48,64 @@ export function Hero() {
         <div className="relative grid items-center gap-10 pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pt-16">
           <div>
             <h1 className="max-w-xl text-4xl leading-[1.12] font-bold text-balance sm:text-5xl lg:text-[3.4rem]">
-              Local commerce,{" "}
-              <span className="text-accent-400">delivered in minutes.</span>
+              Your Store.{" "}
+              <span className="text-accent-400">Now Online.</span>
             </h1>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-brand-100 text-pretty sm:text-lg">
-              Owsho connects nearby stores to customers who want it all — the
-              trust of a local seller, and the convenience of delivery in
-              minutes.
+              Take your store online and reach customers across your city with
+              delivery in minutes. Sign up and start selling.
             </p>
 
+            {/* CTA buttons */}
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/categories" variant="accent" size="lg">
-                What you can find
+              <ButtonLink href="/become-a-seller" variant="accent" size="lg">
+                Sell on Owsho
                 <ArrowRightIcon className="h-5 w-5" />
               </ButtonLink>
-              <ButtonLink href="/become-a-seller" variant="ghost-light" size="lg">
-                Sell on Owsho
-              </ButtonLink>
+
+              {sellerAndroid ? (
+                <a
+                  href={sellerAndroid}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="inline-flex h-13 items-center justify-center gap-2 rounded-pill border-2 border-white/70 px-7 text-base font-semibold text-white transition-colors hover:bg-white hover:text-brand-700"
+                >
+                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92ZM14.852 13.06l2.29 2.29-8.78 4.98 6.49-7.27ZM18.93 10.1l2.35 1.34a1 1 0 0 1 0 1.72l-2.35 1.34-2.52-2.22 2.52-2.18ZM8.362 3.67l8.78 4.98-2.29 2.29-6.49-7.27Z" />
+                  </svg>
+                  Get it on Google Play
+                </a>
+              ) : (
+                <ButtonLink href="/become-a-seller" variant="ghost-light" size="lg">
+                  Learn more
+                </ButtonLink>
+              )}
             </div>
 
-            <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
-              {heroTrustPoints.map(({ label, Icon }) => (
-                <li key={label} className="flex items-center gap-2 text-sm">
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-500 text-ink-900">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  <span className="text-brand-100">{label}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Why Sellers Choose Owsho */}
+            <div className="mt-10">
+              <p className="text-xs font-semibold tracking-[0.18em] text-accent-400 uppercase">
+                Why Sellers Choose Owsho
+              </p>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {sellerPoints.map((point) => (
+                  <li
+                    key={point.title}
+                    className="flex gap-3 rounded-2xl bg-white/10 p-4"
+                  >
+                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-accent-400" />
+                    <div>
+                      <h3 className="text-sm font-semibold text-white">
+                        {point.title}
+                      </h3>
+                      <p className="mt-1 text-xs leading-relaxed text-brand-200">
+                        {point.description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Fixed aspect ratio reserves the space before paint — zero CLS. */}

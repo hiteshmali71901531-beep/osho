@@ -13,11 +13,11 @@ const chip =
  * nowhere costs more trust than it buys.
  */
 export function AppBand({
-  app = "customer",
-  title = "Download the Owsho app",
-  description = "Everything from your local stores, delivered to your doorstep.",
+  app = "seller",
+  title = "Download the Owsho Seller app",
+  description = "Manage your catalogue, availability and orders from your phone.",
 }: {
-  app?: "customer" | "seller";
+  app?: "seller";
   title?: string;
   description?: string;
 }) {

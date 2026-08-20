@@ -73,7 +73,7 @@ export default function BecomeASellerPage() {
           sellerSteps,
         )}
       />
-      <JsonLd data={mobileAppSchema("seller")} />
+      <JsonLd data={mobileAppSchema()} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
@@ -171,7 +171,6 @@ export default function BecomeASellerPage() {
       />
 
       <AppBand
-        app="seller"
         title="Run your shop from the Owsho Seller app"
         description="Manage your catalogue, availability and orders from your phone."
       />
