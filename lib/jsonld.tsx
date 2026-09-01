@@ -200,26 +200,6 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]) {
   };
 }
 
-/** The shopping categories carried on the marketplace. */
-export function itemListSchema(
-  name: string,
-  items: { name: string; description: string; path: string }[],
-) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name,
-    numberOfItems: items.length,
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      description: item.description,
-      url: absoluteUrl(item.path),
-    })),
-  };
-}
-
 export function howToSchema(
   name: string,
   description: string,

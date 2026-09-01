@@ -100,7 +100,6 @@ export type NavItem = {
 export const mainNav: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/categories", label: "Categories" },
   { href: "/express", label: "Owsho Express" },
   { href: "/careers", label: "Careers" },
   { href: "/faq", label: "Seller FAQs" },
@@ -117,7 +116,6 @@ export const allRoutes: { href: Route; priority: number }[] = [
   { href: "/become-a-seller", priority: 0.9 },
   { href: "/about", priority: 0.8 },
   { href: "/express", priority: 0.8 },
-  { href: "/categories", priority: 0.7 },
   { href: "/delivery-partner", priority: 0.7 },
   { href: "/warehouse-partner", priority: 0.7 },
   { href: "/faq", priority: 0.6 },

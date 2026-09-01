@@ -27,7 +27,6 @@ const groups: LinkGroup[] = [
   {
     heading: "For consumers",
     links: [
-      { href: "/categories", label: "Categories" },
       { href: "/faq", label: "Seller FAQs" },
       { href: "/privacy", label: "Privacy" },
       { href: "/terms", label: "Terms" },

@@ -39,14 +39,14 @@ export const sellerBenefits: Point[] = [
   {
     title: "Expand your reach",
     description:
-      "Your store can now reach thousands of customers across your city — with more cities joining soon.",
+      "Your store can reach customers across your city, with operations being built out market by market.",
     Icon: GlobeIcon,
     tone: "brand",
   },
   {
-    title: "It's simple and free",
+    title: "Simple to manage",
     description:
-      "Onboard your products in minutes, at no listing cost, and manage your business effortlessly.",
+      "Add your products, keep your availability current and manage your orders from the Owsho seller app.",
     Icon: CheckCircleIcon,
     tone: "accent",
   },

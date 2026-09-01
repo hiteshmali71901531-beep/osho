@@ -8,7 +8,6 @@ import { PointGrid } from "@/components/sections/PointGrid";
 import { StepsRail } from "@/components/sections/StepsRail";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { categories } from "@/lib/content/categories";
 import { sellerBenefits, sellerDocuments, sellerSteps } from "@/lib/content/seller";
 import { AppBand } from "@/components/sections/AppBand";
 import {
@@ -21,7 +20,7 @@ import {
 import { site } from "@/lib/site";
 
 const description =
-  "Give your customers the convenience of shopping from you, wherever they are. Sign up and start selling on Owsho — free listing, no hidden charges.";
+  "Give your customers the convenience of shopping from you, wherever they are. Fill in your details and our team will get in touch with you about selling on Owsho.";
 
 export const metadata: Metadata = {
   title: "Sell on Owsho",
@@ -36,8 +35,8 @@ export const metadata: Metadata = {
 
 const highlights = [
   {
-    title: "Free listing",
-    detail: "No listing cost to put your products online.",
+    title: "A digital storefront",
+    detail: "Your products, discoverable by customers nearby.",
     Icon: PriceTagIcon,
   },
   {
@@ -84,7 +83,7 @@ export default function BecomeASellerPage() {
       <PageHero
         eyebrow="Seller Hub"
         title="Your Shop. Online."
-        description="Give your customers the convenience of shopping from you, wherever they are. Sign up and start selling on Owsho — free listing, no hidden charges."
+        description={description}
         breadcrumb={[
           { name: "Home", href: "/" },
           { name: "Sell on Owsho", href: "/become-a-seller" },
@@ -188,8 +187,8 @@ export default function BecomeASellerPage() {
               />
               <ul className="mt-8 space-y-3">
                 {[
-                  "Free listing. No hidden charges.",
-                  "Onboard your products in minutes and manage them from your phone.",
+                  "Manage your catalogue, availability and orders from your phone.",
+                  "Applicable commercial terms are communicated before or during the relevant service.",
                   "Your details are used for onboarding, verification and support only.",
                   "Our team will review your details and get in touch regarding the next steps.",
                 ].map((point) => (
@@ -254,23 +253,13 @@ export default function BecomeASellerPage() {
                   <label className={labelClass} htmlFor="category">
                     Business category
                   </label>
-                  <select
+                  <input
                     id="category"
                     name="category"
                     required
-                    defaultValue=""
-                    className={`${fieldClass} appearance-none`}
-                  >
-                    <option value="" disabled>
-                      Select your category
-                    </option>
-                    {categories.map((category) => (
-                      <option key={category.slug} value={category.name}>
-                        {category.name}
-                      </option>
-                    ))}
-                    <option value="Other">Other</option>
-                  </select>
+                    placeholder="Enter your business category"
+                    className={fieldClass}
+                  />
                 </div>
 
                 <div className="sm:col-span-2">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DeliveryRideScene } from "@/components/illustrations/Scenes";
 import { ChecklistSection } from "@/components/sections/ChecklistSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -57,14 +58,17 @@ export default function DeliveryPartnerPage() {
           { name: "Delivery Partner", href: "/delivery-partner" },
         ]}
       >
-        <div className="max-w-2xl">
-          <p className="text-base leading-relaxed text-brand-100">
-            {deliveryHero.supporting}
-          </p>
-          <ButtonLink href="/contact" variant="accent" size="lg" className="mt-7">
-            Apply to become a delivery partner
-            <ArrowRightIcon className="h-5 w-5" />
-          </ButtonLink>
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr]">
+          <div className="max-w-2xl">
+            <p className="text-base leading-relaxed text-brand-100">
+              {deliveryHero.supporting}
+            </p>
+            <ButtonLink href="/contact" variant="accent" size="lg" className="mt-7">
+              Apply to become a delivery partner
+              <ArrowRightIcon className="h-5 w-5" />
+            </ButtonLink>
+          </div>
+          <DeliveryRideScene className="w-full max-w-[480px] lg:ml-auto" />
         </div>
       </PageHero>
 

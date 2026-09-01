@@ -9,7 +9,7 @@ type Action = { href: Route; label: string };
 /** The blue closing band. Defaults to the seller call to action. */
 export function CtaBand({
   title = "Your shop. Online.",
-  description = "Give your customers the convenience of shopping from you, wherever they are. Sign up and start selling on Owsho — free listing, no hidden charges.",
+  description = "Give your customers the convenience of shopping from you, wherever they are. Fill in your details and our team will get in touch with you about selling on Owsho.",
   primary = { href: "/become-a-seller", label: "Sell on Owsho" },
   secondary = { href: "/faq", label: "Read the seller FAQs" },
 }: {

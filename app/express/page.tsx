@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { OrderReceivedScene } from "@/components/illustrations/Scenes";
 import { PageHero } from "@/components/sections/PageHero";
 import { PointGrid } from "@/components/sections/PointGrid";
 import { StepsRail } from "@/components/sections/StepsRail";
@@ -85,6 +86,12 @@ export default function ExpressPage() {
         title="Closer inventory, faster orders"
         points={builtForTheCustomer}
       />
+
+      <section className="pt-4">
+        <Container>
+          <OrderReceivedScene className="mx-auto w-full max-w-[560px]" />
+        </Container>
+      </section>
 
       <StepsRail
         eyebrow="How it works"

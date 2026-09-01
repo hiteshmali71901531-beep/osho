@@ -1,74 +1,76 @@
 import {
-  GlobeIcon,
-  HeartHandIcon,
-  SparkleIcon,
-  StoreIcon,
-  TruckIcon,
-  UsersIcon,
-} from "@/components/brand/Icons";
-import type { Feature, Point } from "@/lib/content/types";
+  DeliveredInMinutesScene,
+  ExpandReachScene,
+  GrowOnlineScene,
+  ReachNearbyScene,
+  SimpleToStartScene,
+} from "@/components/illustrations/SellerScenes";
 
 /**
- * "Built for the local customer" — the three customer-facing propositions from
- * the approved Owsho Express page copy.
+ * Approved Owsho Seller Hub home page copy. Every line on the home page comes
+ * from here, and every line here is reproduced from that page.
  */
-export const features: Feature[] = [
+
+export const homeHero = {
+  title: "Your store. Now online.",
+  description:
+    "Give your customers the convenience of shopping from you, wherever they are — with delivery to their doorstep in minutes. Sign up and start selling on Owsho.",
+  cta: "Sell on Owsho",
+  reassurance: "Free listing. No hidden charges.",
+};
+
+export type SellerReason = {
+  title: string;
+  description: string;
+  Scene: typeof ReachNearbyScene;
+};
+
+/** "Why sellers choose Owsho — every seller's top choice, and here's why." */
+export const sellerReasons: SellerReason[] = [
   {
-    title: "Faster access to everyday products",
+    title: "Reach your customers nearby",
     description:
-      "Built around nearby inventory and local fulfilment, so eligible orders reach you quickly.",
-    Icon: TruckIcon,
-    tone: "brand",
+      "We connect your store to customers around you through our growing network of local delivery partners.",
+    Scene: ReachNearbyScene,
   },
   {
-    title: "Local businesses, digitally connected",
+    title: "Delivered in minutes",
     description:
-      "Neighbourhood stores already have the products and the trust. We connect them with the technology.",
-    Icon: StoreIcon,
-    tone: "accent",
+      "Once an order is placed, our delivery partners pick it up and get it to your customer's doorstep fast.",
+    Scene: DeliveredInMinutesScene,
   },
   {
-    title: "Technology meets local commerce",
+    title: "Grow your business online",
     description:
-      "Demand, seller inventory, order management, local fulfilment and delivery, brought together.",
-    Icon: SparkleIcon,
-    tone: "brand",
+      "List your products on a platform built for local commerce, and unlock new sales opportunities.",
+    Scene: GrowOnlineScene,
+  },
+  {
+    title: "Expand your reach",
+    description:
+      "Your store can now reach thousands of customers across your city, with more cities joining soon.",
+    Scene: ExpandReachScene,
+  },
+  {
+    title: "Simple to get started",
+    description:
+      "Create your store, list your products at no cost, and start selling online in minutes.",
+    Scene: SimpleToStartScene,
   },
 ];
 
-/**
- * "Owsho runs on a simple network — customers who want convenience, local
- * sellers who want reach, and delivery partners who bring it all together."
- * (About Us — Built on Local Commerce.)
- */
-export const networkPillars: Point[] = [
-  {
-    title: "Customers",
-    description:
-      "People who want the convenience of shopping online without giving up the shops they already know.",
-    Icon: UsersIcon,
-    tone: "brand",
-  },
-  {
-    title: "Local sellers",
-    description:
-      "Neighbourhood businesses that want reach — a real digital storefront, without building any of it themselves.",
-    Icon: StoreIcon,
-    tone: "accent",
-  },
-  {
-    title: "Delivery partners",
-    description:
-      "Independent delivery professionals who bring every order from the store to the customer's door.",
-    Icon: TruckIcon,
-    tone: "brand",
-  },
-];
+export const builtForLocalCommerce = {
+  title: "Built for local commerce",
+  description:
+    "Every neighbourhood has businesses that customers already know and trust. Owsho helps these local stores go online, keeping that trust alive while giving sellers the reach of a modern marketplace.",
+  stats: [
+    { value: "Minutes", label: "delivery to your customer's door" },
+    { value: "₹0", label: "listing cost to get started" },
+    { value: "Soon", label: "launching in your city" },
+  ],
+};
 
-/** Short trust points shown under the home hero. */
-export const heroTrustPoints: { label: string; Icon: Feature["Icon"] }[] = [
-  { label: "Local sellers", Icon: StoreIcon },
-  { label: "Delivered in minutes", Icon: TruckIcon },
-  { label: "Free listing for sellers", Icon: HeartHandIcon },
-  { label: "Deesa, and growing", Icon: GlobeIcon },
-];
+export const whereWeOperate = {
+  eyebrow: "Where we operate",
+  title: "Coming soon to your city",
+};
