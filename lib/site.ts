@@ -106,7 +106,7 @@ export const mainNav: NavItem[] = [
 ];
 
 export const sellerCta = {
-  href: "/become-a-seller" as Route,
+  href: "/become-a-seller#apply" as Route,
   label: "Sell on Owsho",
 };
 

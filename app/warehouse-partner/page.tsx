@@ -7,7 +7,7 @@ import { PointGrid } from "@/components/sections/PointGrid";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRightIcon, WarehouseIcon } from "@/components/brand/Icons";
+import { ArrowRightIcon, MailIcon, PhoneIcon, PinIcon, WarehouseIcon } from "@/components/brand/Icons";
 import {
   warehouseBenefits,
   warehouseCareer,
@@ -17,6 +17,7 @@ import {
   warehouseResponsibilities,
 } from "@/lib/content/partners";
 import { breadcrumbSchema, faqSchema, JsonLd, webPageSchema } from "@/lib/jsonld";
+import { registeredAddress, site, telHref } from "@/lib/site";
 
 const description =
   "Pick, pack and sort orders placed by our customers. Join Owsho's warehouse team — competitive salary, structured shifts, on-the-job training and room to grow.";
@@ -114,6 +115,61 @@ export default function WarehousePartnerPage() {
         faqs={warehouseFaqs}
         tinted
       />
+
+      {/* Contact Us */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-2xl font-bold text-brand-950 sm:text-3xl">
+              Contact Us
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-ink-600">
+              Have questions about warehouse roles? Get in touch with our team.
+            </p>
+            <dl className="mt-8 space-y-5">
+              <div className="flex items-start gap-3">
+                <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                <div>
+                  <dt className="text-sm font-semibold text-brand-950">Email</dt>
+                  <dd className="mt-0.5 text-sm text-ink-600">
+                    <a
+                      href={`mailto:${site.email}`}
+                      className="whitespace-nowrap text-brand-700 hover:underline"
+                    >
+                      {site.email}
+                    </a>
+                  </dd>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                <div>
+                  <dt className="text-sm font-semibold text-brand-950">Phone</dt>
+                  <dd className="mt-0.5 text-sm text-ink-600">
+                    <a
+                      href={telHref(site.phone)}
+                      className="text-brand-700 hover:underline"
+                    >
+                      {site.phone}
+                    </a>
+                  </dd>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <PinIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                <div>
+                  <dt className="text-sm font-semibold text-brand-950">
+                    Registered Office
+                  </dt>
+                  <dd className="mt-0.5 text-sm text-ink-600">
+                    {registeredAddress}
+                  </dd>
+                </div>
+              </div>
+            </dl>
+          </div>
+        </Container>
+      </section>
 
       <CtaBand
         title={warehouseClosing.title}

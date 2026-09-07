@@ -19,11 +19,11 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
                 carries the document's own title as a caption rather than a
                 second top-level heading. */}
             <header className="border-b border-ink-100 pb-8">
-              <p className="text-sm font-semibold text-brand-950">{doc.title}</p>
-              <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-500">
-                {doc.version ? <span>Version {doc.version}</span> : null}
-                <span>Last updated: {doc.lastUpdated}</span>
+              <p className="text-lg font-bold text-brand-950">{doc.title}</p>
+              <p className="mt-1.5 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-sm text-ink-500">
+                {doc.version ? <span className="font-medium text-ink-700">Version {doc.version}</span> : null}
               </p>
+              <p className="mt-1 text-xs text-ink-400">Last updated: {doc.lastUpdated}</p>
               <div className="mt-6 space-y-4">
                 {doc.intro.map((paragraph) => (
                   <p key={paragraph} className="text-sm leading-relaxed text-ink-600">
@@ -60,13 +60,10 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
 function TableOfContents({ doc }: { doc: LegalDoc }) {
   return (
     <nav
-      aria-label="On this page"
+      aria-label="Page sections"
       className="lg:sticky lg:top-24 lg:self-start"
     >
-      <h2 className="text-xs font-semibold tracking-[0.18em] text-accent-700 uppercase">
-        On this page
-      </h2>
-      <ol className="mt-4 max-h-[60vh] space-y-1.5 overflow-y-auto pr-2 text-sm">
+      <ol className="max-h-[60vh] space-y-1.5 overflow-y-auto pr-2 text-sm">
         {doc.sections.map((section) => (
           <li key={section.id}>
             <a

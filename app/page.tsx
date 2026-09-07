@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { ArrowRightIcon, CheckCircleIcon } from "@/components/brand/Icons";
-import { SellerHeroScene } from "@/components/illustrations/SellerScenes";
+import Image from "next/image";
+import { CheckCircleIcon } from "@/components/brand/Icons";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -50,13 +50,12 @@ export default function HomePage() {
               </p>
 
               <ButtonLink
-                href="/become-a-seller"
+                href="/become-a-seller#apply"
                 variant="accent"
                 size="lg"
                 className="mt-8"
               >
                 {homeHero.cta}
-                <ArrowRightIcon className="h-5 w-5" />
               </ButtonLink>
 
               <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-brand-100">
@@ -65,8 +64,17 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Fixed aspect ratio reserves the space before paint — zero CLS. */}
-            <SellerHeroScene className="mx-auto aspect-[560/420] w-full max-w-[560px]" />
+            {/* Banner image */}
+            <div className="mx-auto w-full max-w-[560px] overflow-hidden rounded-2xl">
+              <Image
+                src="/banner.webp"
+                alt="Owsho Marketplace — Local store in minutes app"
+                width={1200}
+                height={400}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
           </div>
         </Container>
       </section>

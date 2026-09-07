@@ -5,7 +5,6 @@ import {
   CityNetworkScene,
   DigitalStorefrontScene,
   EcosystemScene,
-  LocalCommerceScene,
   OfflineToOnlineScene,
   ShopGrowthScene,
 } from "@/components/illustrations/Scenes";
@@ -99,23 +98,16 @@ export default function AboutPage() {
         ])}
       />
 
-      {/* 1. Hero */}
+      {/* 1. Hero — simplified */}
       <PageHero
         eyebrow={aboutHero.eyebrow}
-        title={aboutHero.title}
-        description={aboutHero.description}
+        title="About Owsho"
+        description="Learn about our mission to bring local businesses online."
         breadcrumb={[
           { name: "Home", href: "/" },
           { name: "About Us", href: "/about" },
         ]}
-      >
-        <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.1fr]">
-          <p className="text-2xl leading-tight font-bold text-balance text-accent-400 sm:text-3xl">
-            {aboutHero.banner}
-          </p>
-          <LocalCommerceScene className="w-full max-w-[520px] lg:ml-auto" />
-        </div>
-      </PageHero>
+      />
 
       {/* 2. Our Story */}
       <SplitSection

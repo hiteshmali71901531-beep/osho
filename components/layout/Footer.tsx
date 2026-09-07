@@ -45,18 +45,8 @@ const groups: LinkGroup[] = [
   },
 ];
 
-/**
- * Two Instagram accounts: the customer-facing brand and the seller programme.
- * Both are labelled, because identical icons pointing at different audiences
- * are indistinguishable to anyone using a screen reader or a tooltip.
- */
 const socials = [
   { href: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
-  {
-    href: site.social.instagramSellers,
-    label: "Instagram for sellers",
-    Icon: InstagramIcon,
-  },
   { href: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
   { href: site.social.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
 ];
@@ -78,7 +68,7 @@ export function Footer() {
                 <MailIcon className="h-4 w-4 shrink-0 text-accent-400" />
                 <a
                   href={`mailto:${site.email}`}
-                  className="break-all hover:text-accent-300"
+                  className="whitespace-nowrap hover:text-accent-300"
                 >
                   {site.email}
                 </a>

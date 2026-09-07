@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { submitSellerApplication } from "@/app/actions";
-import { CheckCircleIcon, PinIcon, PriceTagIcon, TruckIcon } from "@/components/brand/Icons";
+import { CheckCircleIcon, PriceTagIcon, TruckIcon } from "@/components/brand/Icons";
 import { ChecklistSection } from "@/components/sections/ChecklistSection";
 import { PageHero } from "@/components/sections/PageHero";
 import { PointGrid } from "@/components/sections/PointGrid";
@@ -43,11 +43,6 @@ const highlights = [
     title: "Delivered in minutes",
     detail: "Our delivery partners take it from your counter.",
     Icon: TruckIcon,
-  },
-  {
-    title: "Onboarding in Deesa",
-    detail: "Expanding to more cities soon.",
-    Icon: PinIcon,
   },
 ];
 
@@ -117,7 +112,7 @@ export default function BecomeASellerPage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
             <SectionHeading
               eyebrow="Built for local commerce"
-              title="The trust is already yours. We add the reach."
+              title="Bringing local businesses online"
               description="Every neighbourhood has businesses that customers already know and trust. Owsho helps these local stores go online — keeping that trust alive, while giving sellers the reach of a modern marketplace."
               align="left"
             />
@@ -126,7 +121,7 @@ export default function BecomeASellerPage() {
                 Where we operate
               </h3>
               <p className="mt-3 text-2xl font-bold text-brand-950">
-                Currently onboarding sellers in Deesa, Gujarat
+                Currently onboarding sellers in Gujarat
               </p>
               <p className="mt-3 text-sm leading-relaxed text-ink-500">
                 Owsho is in its initial launch and expansion phase, with

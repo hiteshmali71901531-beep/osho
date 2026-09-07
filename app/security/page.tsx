@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal/LegalPage";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
-import { LockIcon } from "@/components/brand/Icons";
+import { LockIcon, MailIcon, PhoneIcon, PinIcon } from "@/components/brand/Icons";
 import { securityDoc } from "@/lib/content/legal/security";
 import { breadcrumbSchema, JsonLd, webPageSchema } from "@/lib/jsonld";
-import { site } from "@/lib/site";
+import { registeredAddress, site, telHref } from "@/lib/site";
 
 const description =
   "How Owsho protects seller business, KYC, banking and account information — safeguards, fraud prevention, incident reporting under CERT-In and the DPDP Act, and responsible disclosure.";
@@ -83,7 +83,7 @@ export default function SecurityPage() {
                 compromised, write to{" "}
                 <a
                   href={`mailto:${site.email}`}
-                  className="font-semibold break-all underline"
+                  className="font-semibold whitespace-nowrap underline"
                 >
                   {site.email}
                 </a>{" "}
@@ -95,6 +95,62 @@ export default function SecurityPage() {
       </section>
 
       <LegalPage doc={securityDoc} />
+
+      {/* Contact Us */}
+      <section className="bg-brand-50/60 py-16 sm:py-20">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-2xl font-bold text-brand-950 sm:text-3xl">
+              Contact Us
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-ink-600">
+              If you have any questions about security or believe your account
+              may have been compromised, get in touch immediately.
+            </p>
+            <dl className="mt-8 space-y-5">
+              <div className="flex items-start gap-3">
+                <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                <div>
+                  <dt className="text-sm font-semibold text-brand-950">Email</dt>
+                  <dd className="mt-0.5 text-sm text-ink-600">
+                    <a
+                      href={`mailto:${site.email}`}
+                      className="whitespace-nowrap text-brand-700 hover:underline"
+                    >
+                      {site.email}
+                    </a>
+                  </dd>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                <div>
+                  <dt className="text-sm font-semibold text-brand-950">Phone</dt>
+                  <dd className="mt-0.5 text-sm text-ink-600">
+                    <a
+                      href={telHref(site.phone)}
+                      className="text-brand-700 hover:underline"
+                    >
+                      {site.phone}
+                    </a>
+                  </dd>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <PinIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                <div>
+                  <dt className="text-sm font-semibold text-brand-950">
+                    Registered Office
+                  </dt>
+                  <dd className="mt-0.5 text-sm text-ink-600">
+                    {registeredAddress}
+                  </dd>
+                </div>
+              </div>
+            </dl>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

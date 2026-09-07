@@ -136,7 +136,7 @@ export default function CareersPage() {
               className="mt-7 inline-flex h-13 max-w-full items-center justify-center gap-2 rounded-pill bg-brand-600 px-7 text-base font-semibold text-white transition-colors hover:bg-brand-700"
             >
               <MailIcon className="h-5 w-5 shrink-0" />
-              <span className="break-all">{site.email}</span>
+              <span className="whitespace-nowrap">{site.email}</span>
             </a>
           </div>
         </Container>
