@@ -68,7 +68,7 @@ export const site = {
   },
 
   social: {
-    instagram: "https://www.instagram.com/owshoapp",
+    instagram: "https://www.instagram.com/sellonowsho/",
     instagramSellers: "https://www.instagram.com/sellonowsho",
     facebook: "https://www.facebook.com/share/14naxZL4KDh/",
     linkedin: "https://www.linkedin.com/company/owhso-marketplace/",

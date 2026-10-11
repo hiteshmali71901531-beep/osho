@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowRightIcon } from "@/components/brand/Icons";
 import { StoreBadges } from "@/components/brand/StoreBadges";
 import {
@@ -8,7 +9,6 @@ import {
   OfflineToOnlineScene,
   ShopGrowthScene,
 } from "@/components/illustrations/Scenes";
-import { PageHero } from "@/components/sections/PageHero";
 import { PointGrid } from "@/components/sections/PointGrid";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -98,16 +98,19 @@ export default function AboutPage() {
         ])}
       />
 
-      {/* 1. Hero — simplified */}
-      <PageHero
-        eyebrow={aboutHero.eyebrow}
-        title="About Owsho"
-        description="Learn about our mission to bring local businesses online."
-        breadcrumb={[
-          { name: "Home", href: "/" },
-          { name: "About Us", href: "/about" },
-        ]}
-      />
+      {/* 1. Hero Banner */}
+      <section className="relative w-full bg-[#0570be] pt-6 pb-2 sm:pt-9 sm:pb-4">
+        <h1 className="sr-only">About Owsho — Local store In Minutes App</h1>
+        <Image
+          src="/osho_banner.jpeg"
+          alt="Owsho Marketplace — Local store In Minutes App"
+          width={1170}
+          height={280}
+          sizes="100vw"
+          className="h-auto w-full"
+          priority
+        />
+      </section>
 
       {/* 2. Our Story */}
       <SplitSection
@@ -130,8 +133,8 @@ export default function AboutPage() {
         flip
         tinted
       >
+        <p className={emphasis}>{whyOwsho.lead}</p>
         <p className={paragraph}>{whyOwsho.body}</p>
-        <p className={emphasis}>{whyOwsho.closing}</p>
       </SplitSection>
 
       <PointGrid title="What going digital gives you" points={whyOwshoPoints} />
@@ -206,7 +209,7 @@ export default function AboutPage() {
                   ios={site.apps.seller.ios}
                   android={site.apps.seller.android}
                   tone="dark"
-                  className="mt-3 flex flex-wrap justify-center gap-3"
+                  className="mt-3 flex w-full max-w-sm flex-nowrap justify-center gap-2 sm:gap-3"
                 />
               </div>
             </div>

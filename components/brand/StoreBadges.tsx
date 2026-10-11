@@ -28,7 +28,7 @@ function PlayMark({ className = "" }: { className?: string }) {
 }
 
 const badgeBase =
-  "inline-flex h-14 items-center gap-3 rounded-xl px-4 transition-colors";
+  "inline-flex h-11 min-[360px]:h-12 sm:h-14 items-center gap-1.5 min-[360px]:gap-2.5 sm:gap-3 rounded-lg sm:rounded-xl px-2 min-[360px]:px-3 sm:px-4 transition-colors flex-1 sm:flex-initial min-w-0 justify-center";
 
 type Store = "ios" | "android";
 
@@ -72,12 +72,14 @@ export function StoreBadge({
 
   const content = (
     <>
-      <Mark className="h-7 w-7 shrink-0" />
-      <span className="flex flex-col items-start leading-none">
-        <span className="text-[0.625rem] tracking-wide uppercase opacity-80">
+      <Mark className="h-5 w-5 min-[360px]:h-6 min-[360px]:w-6 sm:h-7 sm:w-7 shrink-0" />
+      <span className="flex flex-col items-start leading-tight min-w-0">
+        <span className="text-[8px] min-[360px]:text-[9px] sm:text-[0.625rem] tracking-tight sm:tracking-wide uppercase opacity-80 whitespace-nowrap">
           {caption}
         </span>
-        <span className="mt-1 text-base font-semibold">{name}</span>
+        <span className="text-[11px] min-[360px]:text-xs sm:text-base font-semibold whitespace-nowrap tracking-tight sm:tracking-normal">
+          {name}
+        </span>
       </span>
     </>
   );
@@ -92,7 +94,7 @@ export function StoreBadge({
         }`}
       >
         {content}
-        <span className="ml-1 text-xs font-normal">(coming soon)</span>
+        <span className="hidden min-[400px]:inline ml-1 text-xs font-normal">(coming soon)</span>
       </span>
     );
   }
@@ -115,7 +117,7 @@ export function StoreBadges({
   ios,
   android,
   tone = "dark",
-  className = "flex flex-wrap gap-3",
+  className = "flex w-full sm:w-auto flex-nowrap items-center justify-center sm:justify-start gap-2 sm:gap-3",
 }: {
   ios?: string;
   android?: string;

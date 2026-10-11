@@ -10,6 +10,8 @@ import {
   sellerReasons,
   whereWeOperate,
 } from "@/lib/content/home";
+import { SellerHeroScene } from "@/components/illustrations/SellerScenes";
+
 import { JsonLd, mobileAppSchema } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 
@@ -66,14 +68,8 @@ export default function HomePage() {
 
             {/* Banner image */}
             <div className="mx-auto w-full max-w-[560px] overflow-hidden rounded-2xl">
-              <Image
-                src="/banner.webp"
-                alt="Owsho Marketplace — Local store in minutes app"
-                width={1200}
-                height={400}
-                className="h-auto w-full object-cover"
-                priority
-              />
+                          <SellerHeroScene className="mx-auto aspect-[560/420] w-full max-w-[560px]" />
+
             </div>
           </div>
         </Container>

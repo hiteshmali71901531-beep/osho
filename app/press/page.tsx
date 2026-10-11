@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { LogoMark } from "@/components/brand/Logo";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { PageHero } from "@/components/sections/PageHero";
 import { RegisteredOffice } from "@/components/sections/ContactCards";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,7 +10,6 @@ import {
   background,
   modelPillars,
   pressFaqs,
-  pressHero,
   pressPullQuote,
 } from "@/lib/content/press";
 import { breadcrumbSchema, faqSchema, JsonLd, webPageSchema } from "@/lib/jsonld";
@@ -48,15 +47,19 @@ export default function PressPage() {
         ])}
       />
 
-      <PageHero
-        eyebrow={pressHero.eyebrow}
-        title={pressHero.title}
-        description={pressHero.description}
-        breadcrumb={[
-          { name: "Home", href: "/" },
-          { name: "Press Center", href: "/press" },
-        ]}
-      />
+      {/* Hero Banner */}
+      <section className="relative w-full bg-[#0570be] pt-6 pb-2 sm:pt-9 sm:pb-4">
+        <h1 className="sr-only">Press Center — Owsho</h1>
+        <Image
+          src="/osho_banner.jpeg"
+          alt="Owsho Marketplace — Local store In Minutes App"
+          width={1170}
+          height={280}
+          sizes="100vw"
+          className="h-auto w-full"
+          priority
+        />
+      </section>
 
       {/* Logo / brand assets */}
       <section className="py-16 sm:py-20">

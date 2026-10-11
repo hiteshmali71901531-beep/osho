@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { submitSellerApplication } from "@/app/actions";
-import { CheckCircleIcon, PriceTagIcon, TruckIcon } from "@/components/brand/Icons";
+import { PriceTagIcon, TruckIcon } from "@/components/brand/Icons";
 import { ChecklistSection } from "@/components/sections/ChecklistSection";
 import { PageHero } from "@/components/sections/PageHero";
 import { PointGrid } from "@/components/sections/PointGrid";
@@ -172,32 +172,16 @@ export default function BecomeASellerPage() {
       {/* Application form */}
       <section id="apply" className="scroll-mt-24 py-16 sm:py-20">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
-            <div>
-              <SectionHeading
-                eyebrow="Become an Owsho seller"
-                title="Grow your business with Owsho"
-                description="Fill in your details and our team will get in touch with you."
-                align="left"
-              />
-              <ul className="mt-8 space-y-3">
-                {[
-                  "Manage your catalogue, availability and orders from your phone.",
-                  "Applicable commercial terms are communicated before or during the relevant service.",
-                  "Your details are used for onboarding, verification and support only.",
-                  "Our team will review your details and get in touch regarding the next steps.",
-                ].map((point) => (
-                  <li key={point} className="flex gap-3 text-sm text-ink-600">
-                    <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="mx-auto max-w-2xl">
+            <SectionHeading
+              eyebrow="Become an Owsho seller"
+              title="Grow your business with Owsho"
+              description="Fill in your details and our team will get in touch with you."
+            />
 
             <form
               action={submitSellerApplication}
-              className="rounded-card border border-ink-100 bg-white p-6 shadow-card sm:p-8"
+              className="mt-10 rounded-card border border-ink-100 bg-white p-6 shadow-card sm:p-8"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>

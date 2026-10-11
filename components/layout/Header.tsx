@@ -12,7 +12,7 @@ import { sellerCta } from "@/lib/site";
  */
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-brand-800">
+    <header className="sticky top-0 z-50 border-b border-brand-900/50 bg-brand-800 shadow-sm">
       <Container>
         <div className="flex h-18 items-center justify-between gap-4">
           <Link href="/" className="shrink-0" aria-label="Owsho — home">

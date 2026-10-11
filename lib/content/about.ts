@@ -39,9 +39,9 @@ export const ourStory = {
 /** 3. Why Owsho? */
 export const whyOwsho = {
   eyebrow: "Why Owsho?",
-  title: "Giving local businesses a bigger digital storefront.",
+  title: "Stay Local. Go Digital.",
+  lead: "Giving local businesses a bigger digital storefront.",
   body: "For years, local businesses have been built on trust, relationships, and repeat customers. Owsho brings that strength into the digital world.",
-  closing: "Stay local. Go digital.",
 };
 
 export const whyOwshoPoints: Point[] = [

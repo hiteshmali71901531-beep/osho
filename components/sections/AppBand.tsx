@@ -39,7 +39,7 @@ export function AppBand({
             ios={ios}
             android={android}
             tone="dark"
-            className="flex shrink-0 flex-wrap gap-3"
+            className="flex w-full sm:w-auto shrink-0 flex-nowrap items-center gap-2 sm:gap-3"
           />
         </div>
       </Container>
